@@ -27,6 +27,7 @@ in
 pkgs.mkShell {
   buildInputs = [
     stack-wrapped
+    pkgs.zlib
   ];
 
   # Configure the Nix path to our own `pkgs`, to ensure Stack-with-Nix uses the
