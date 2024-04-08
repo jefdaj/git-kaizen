@@ -1,8 +1,8 @@
-# whatnow
+# kaizen (for files)
 
 ## For users
 
-`whatnow` is ...
+`kaizen` is ...
 
 ## For developers
 
