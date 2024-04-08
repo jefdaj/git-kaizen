@@ -1,8 +1,12 @@
 # kaizen (for files)
 
-## For users
+Kaizen is a fairly general program that suggests "improvements" to your messy files.
+You curate a collection of repetitive task descriptions, and it suggests which ones could be run on which files.
+For example, I use it to extract nested archives from my old, poorly-formatted backups.
 
-`kaizen` is ...
+## Usage
+
+See `usage.txt` for all the command line options.
 
 ## For developers
 
