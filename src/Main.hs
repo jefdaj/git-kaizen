@@ -1,5 +1,8 @@
 module Main where
 
+import Paths_kaizen
+
 main :: IO ()
 main = do
-  putStrLn "kaizen"
+  usage <- readFile =<< getDataFileName "usage.txt"
+  putStrLn usage

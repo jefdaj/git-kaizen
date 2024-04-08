@@ -12,6 +12,8 @@ copyright:      MIT
 license:        MIT
 license-file:   LICENSE
 build-type:     Simple
+data-files:
+    usage.txt
 
 library
   exposed-modules:

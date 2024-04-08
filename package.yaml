@@ -4,6 +4,9 @@ author:              jefdaj
 maintainer:          jefdaj@users.noreply.github.com
 copyright:           "MIT"
 
+data-files:
+  - usage.txt
+
 dependencies:
   - base
   - dhall
