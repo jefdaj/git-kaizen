@@ -1,7 +1,7 @@
 name:                whatnow
 version:             1.0.0.0
-author:              Author name here
-maintainer:          example@example.com
+author:              jefdaj
+maintainer:          jefdaj@users.noreply.github.com
 copyright:           "MIT"
 
 dependencies:
