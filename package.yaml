@@ -7,6 +7,7 @@ copyright:           "MIT"
 dependencies:
   - base
   - dhall
+  - docopt
 
 library:
   source-dirs: src
