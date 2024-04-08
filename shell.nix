@@ -8,7 +8,7 @@ let
   #
   # - nix: Enable Nix support
   # - no-nix-pure: Pass environment variables, like `NIX_PATH`
-  # - nix-shell-file: Specify the Nix file to use (otherwise it uses `shell.nix` by default)
+  # - nix-shell-file: Nix file to use (otherwise it uses `shell.nix` by default)
   stack-wrapped = pkgs.symlinkJoin {
     name = "stack";
     paths = [ pkgs.stack ];
@@ -29,7 +29,9 @@ pkgs.mkShell {
     stack-wrapped
   ];
 
-  # Configure the Nix path to our own `pkgs`, to ensure Stack-with-Nix uses the correct one rather than the global <nixpkgs> when looking for the right `ghc` argument to pass in `nix/stack-integration.nix`
+  # Configure the Nix path to our own `pkgs`, to ensure Stack-with-Nix uses the
+  # correct one rather than the global <nixpkgs> when looking for the right
+  # `ghc` argument to pass in `nix/stack-integration.nix`
   # See https://nixos.org/nixos/nix-pills/nix-search-paths.html for more information
   NIX_PATH = "nixpkgs=" + pkgs.path;
 }
