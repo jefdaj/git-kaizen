@@ -11,6 +11,8 @@ dependencies:
   - base
   - dhall
   - docopt
+  - pretty-simple
+  - text
 
 library:
   source-dirs: src

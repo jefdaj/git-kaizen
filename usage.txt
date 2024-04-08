@@ -1,5 +1,2 @@
 Usage:
-  kaizen
-
-Options:
-  -h, --help  Print usage
+  kaizen check <dhallfile>

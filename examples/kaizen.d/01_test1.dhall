@@ -1,2 +1,3 @@
-{ name = "test1"
+{ name = "Test Person"
+, age = 99
 }
