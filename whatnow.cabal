@@ -22,4 +22,5 @@ library
       src
   build-depends:
       base
+    , dhall
   default-language: Haskell2010
