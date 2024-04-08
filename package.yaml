@@ -5,7 +5,7 @@ maintainer:          jefdaj@users.noreply.github.com
 copyright:           "MIT"
 
 data-files:
-  - usage.txt
+  - examples/kaizen.d/*
 
 dependencies:
   - base

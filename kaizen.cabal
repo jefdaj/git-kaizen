@@ -13,7 +13,7 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 data-files:
-    usage.txt
+    examples/kaizen.d/01_test1.dhall
 
 library
   exposed-modules:
