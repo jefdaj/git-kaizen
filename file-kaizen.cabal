@@ -14,6 +14,7 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 data-files:
+    examples/backup-kaizen.d/01_untar.dhall
     examples/backup-kaizen.d/02_script.dhall
 
 executable file-kaizen

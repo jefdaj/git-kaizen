@@ -19,14 +19,25 @@ patterns = [docoptFile|usage.txt|]
 
 getArgOrExit = getArgOrExitWith patterns
 
-data Person = Person { age :: Natural, name :: Text }
+-- data Person = Person { age :: Natural, name :: Text }
+--     deriving (Generic, FromDhall, Show)
+
+data InPattern = GlobOne Text
     deriving (Generic, FromDhall, Show)
+
+data Task = Task
+    { name :: Text
+    , inpatterns :: [InPattern]
+    , outpaths :: [Text] -> [Text]
+    -- , describe :: [Text] -> [Text] -> Text
+    }
+    deriving (Generic, FromDhall)
 
 cmdCheck :: FilePath -> IO ()
 cmdCheck file = do
   expr <- TIO.readFile file
-  (x :: Person) <- input auto expr
-  print x
+  (x :: Task) <- input auto expr
+  print $ name x
 
 main :: IO ()
 main = do
