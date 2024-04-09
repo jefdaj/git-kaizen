@@ -1,2 +1,2 @@
 Usage:
-  kaizen check <dhallfile>
+  file-kaizen check <dhallfile>

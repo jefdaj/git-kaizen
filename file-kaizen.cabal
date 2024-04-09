@@ -4,9 +4,9 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 
-name:           kaizen
+name:           file-kaizen
 version:        1.0.0.0
-description:    Helper scripts to incrementally improve your files and your workflow.
+description:    Incrementally organize files and automate file-related workflows.
 author:         jefdaj
 maintainer:     jefdaj@users.noreply.github.com
 copyright:      MIT
@@ -14,13 +14,14 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 data-files:
-    examples/kaizen.d/01_test1.dhall
+    examples/file-kaizen-tasks.d/01_test1.dhall
+    examples/file-kaizen-tasks.d/02_script.dhall
 
 library
   exposed-modules:
       Main
   other-modules:
-      Paths_kaizen
+      Paths_file_kaizen
   hs-source-dirs:
       src
   build-depends:

@@ -6,7 +6,7 @@
 
 module Main where
 
-import Paths_kaizen
+import Paths_file_kaizen
 import System.Environment (getArgs)
 import System.Console.Docopt
 import Dhall
