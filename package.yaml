@@ -6,7 +6,7 @@ maintainer:          jefdaj@users.noreply.github.com
 copyright:           "MIT"
 
 data-files:
-  - examples/file-kaizen-tasks.d/*
+  - examples/backup-kaizen.d/*
 
 dependencies:
   - base

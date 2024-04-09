@@ -14,8 +14,7 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 data-files:
-    examples/file-kaizen-tasks.d/01_test1.dhall
-    examples/file-kaizen-tasks.d/02_script.dhall
+    examples/backup-kaizen.d/02_script.dhall
 
 executable file-kaizen
   main-is: FileKaizen.hs
