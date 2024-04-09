@@ -3,24 +3,31 @@ module Tasks.Untar where
 import Lib.Types
 import System.FilePath.Posix (dropExtension)
 
+-- TODO call this data type FileKaizen? Kaizen?
+task :: Task
 task = Task
   { taskName = "untar"
-
--- TODO constructors for different pattern types rather than String here
-  , taskInPatterns =
-      [ GlobOne "*.tar*"
-      ]
-
-  -- TODO generalize to "results" and have fields like "added" and "removed"?
-  , taskOutPaths = \inpaths ->
-      [dropExtension $ head inpaths]
-
-  , taskDescribe = \inpaths outpaths ->
-      let inpath  = "'" ++ head inpaths  ++ "'"
-          outpath = "'" ++ head outpaths ++ "'"
-      in unwords ["untar", inpath, "->", outpath]
-
-  -- TODO use asserts and return () rather than returning a bool?
-  , taskGuard = \inpaths outpaths -> return $
-      (length inpaths  == 1) && (length outpaths == 1)
+  , taskInPatterns = [GlobOne "*.tar*"]
+  , taskOutPaths = outpaths
+  , taskDescribe = desc
+  , taskGuard = guard
+  , taskCommand = undefined -- TODO write this
   }
+
+-- TODO generalize to "results" and have fields like "added" and "removed"?
+outpaths :: [String] -> [String]
+outpaths inpaths = [dropExtension $ head inpaths]
+
+-- TODO relativize paths?
+desc :: [String] -> [String] -> String
+desc inpaths outpaths = unwords
+  [ "extract from"
+  , "'" ++ head inpaths ++ "'"
+  , "->"
+  , "'" ++ head outpaths ++ "'"
+  ]
+
+-- TODO use asserts and return () rather than returning a bool?
+guard :: [String] -> [String] -> IO Bool
+guard inpaths outpaths = return $
+  (length inpaths  == 1) && (length outpaths == 1)
