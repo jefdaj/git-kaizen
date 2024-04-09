@@ -6,7 +6,7 @@ cabal-version: 1.12
 
 name:           file-kaizen
 version:        1.0.0.0
-description:    Incrementally organize files and automate file-related workflows.
+description:    Incrementally organize files and improve file-related workflows.
 author:         jefdaj
 maintainer:     jefdaj@users.noreply.github.com
 copyright:      MIT
