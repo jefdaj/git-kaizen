@@ -1,4 +1,5 @@
 name:                kaizen
+description:         Helper scripts to incrementally improve your files and your workflow.
 version:             1.0.0.0
 author:              jefdaj
 maintainer:          jefdaj@users.noreply.github.com

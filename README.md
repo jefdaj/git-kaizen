@@ -1,8 +1,23 @@
 # kaizen (for files)
 
-Kaizen is a fairly general program that suggests "improvements" to your messy files.
-You curate a collection of repetitive task descriptions, and it suggests which ones could be run on which files.
-For example, I use it to extract nested archives from my old, poorly-formatted backups.
+It's kind of like a build system with no predefined end state.
+Instead, the goal is just to make continuous progress!
+
+Whenever you find youreslf doing something repetitive, stop and try to codify
+it as a script. You define the commands to run along with input and output
+filename patterns. There are optional fancier things like preconditions and
+error handling too. Based on your description, `kaizen` will suggest
+appropriate ways to re-use the script later.
+
+I find there are 3 major benefits to working this way:
+
+1. It starts slow, but builds speed as you delegate more work.
+
+2. Defining how and when commands can run safely clarifies your thinking,
+   helping you remember to be similarly careful the rest of the time.
+
+3. Once you know your scripts are reliable you can launch them quickly
+   and get back to other things with minimal switching cost.
 
 ## Usage
 

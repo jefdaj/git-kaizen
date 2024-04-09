@@ -6,6 +6,7 @@ cabal-version: 1.12
 
 name:           kaizen
 version:        1.0.0.0
+description:    Helper scripts to incrementally improve your files and your workflow.
 author:         jefdaj
 maintainer:     jefdaj@users.noreply.github.com
 copyright:      MIT
