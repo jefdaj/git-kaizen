@@ -14,13 +14,13 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 data-files:
-    examples/backup-kaizen.d/01_untar.dhall
-    examples/backup-kaizen.d/01_untar.hs
     examples/backup-kaizen.d/02_script.dhall
 
 executable file-kaizen
-  main-is: FileKaizen.hs
+  main-is: Main.hs
   other-modules:
+      Lib.Types
+      Tasks.Untar
       Paths_file_kaizen
   hs-source-dirs:
       src

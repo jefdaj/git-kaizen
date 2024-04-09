@@ -18,4 +18,4 @@ dependencies:
 
 executable:
   source-dirs: src
-  main: FileKaizen.hs
+  main: Main.hs
