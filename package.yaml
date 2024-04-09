@@ -15,5 +15,6 @@ dependencies:
   - pretty-simple
   - text
 
-library:
+executable:
   source-dirs: src
+  main: FileKaizen.hs

@@ -17,9 +17,8 @@ data-files:
     examples/file-kaizen-tasks.d/01_test1.dhall
     examples/file-kaizen-tasks.d/02_script.dhall
 
-library
-  exposed-modules:
-      Main
+executable file-kaizen
+  main-is: FileKaizen.hs
   other-modules:
       Paths_file_kaizen
   hs-source-dirs:
