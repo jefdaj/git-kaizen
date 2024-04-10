@@ -22,15 +22,6 @@ patterns = [docoptFile|usage.txt|]
 
 getArgOrExit = getArgOrExitWith patterns
 
--- data Person = Person { age :: Natural, name :: Text }
---     deriving (Generic, FromDhall, Show)
-
--- cmdCheck :: FilePath -> IO ()
--- cmdCheck file = do
-  -- expr <- TIO.readFile file
-  -- (x :: Task) <- input auto expr
-  -- print $ name x
-
 tasks :: [Task]
 tasks =
   [ Untar.task
@@ -41,6 +32,3 @@ main = do
   args <- parseArgsOrExit patterns =<< getArgs
   print args
   putStrLn $ "tasks: " ++ show (map taskName tasks)
-  -- when (args `isPresent` (command "check")) $ do
-  --   file <- args `getArgOrExit` (argument "dhallfile")
-  --   cmdCheck file
