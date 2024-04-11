@@ -6,9 +6,9 @@
 
 module Main where
 
-import Lib.Types
-import qualified Tasks.Untar as Untar
-import Paths_file_kaizen
+import GitKaizen.Types
+import GitKaizen.Tasks
+import Paths_git_kaizen
 
 import System.Environment (getArgs)
 import System.Console.Docopt
@@ -21,11 +21,6 @@ patterns :: Docopt
 patterns = [docoptFile|usage.txt|]
 
 getArgOrExit = getArgOrExitWith patterns
-
-tasks :: [Task]
-tasks =
-  [ Untar.task
-  ]
 
 main :: IO ()
 main = do

@@ -1,6 +1,6 @@
-module Tasks.Untar where
+module GitKaizen.Tasks.Untar where
 
-import Lib.Types
+import GitKaizen.Types
 import System.FilePath.Posix (dropExtension)
 
 -- TODO call this data type GitKaizen? Kaizen?

@@ -1,0 +1,35 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           git-kaizen
+version:        1.0.0.0
+description:    Incrementally organize files and improve file-related workflows.
+author:         jefdaj
+maintainer:     jefdaj@users.noreply.github.com
+copyright:      MIT
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+data-files:
+    tests/untar/untar1.txt.tar
+
+executable git-kaizen
+  main-is: GitKaizen.hs
+  other-modules:
+      GitKaizen.Tasks
+      GitKaizen.Tasks.Untar
+      GitKaizen.Types
+      Paths_git_kaizen
+  hs-source-dirs:
+      src
+  build-depends:
+      base
+    , dhall
+    , docopt
+    , filepath
+    , pretty-simple
+    , text
+  default-language: Haskell2010

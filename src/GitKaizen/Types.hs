@@ -1,4 +1,4 @@
-module Lib.Types where
+module GitKaizen.Types where
 
 -- TODO regexes, maybe with capture groups
 -- TODO exact literal matches?
