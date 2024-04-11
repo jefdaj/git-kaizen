@@ -3,6 +3,7 @@ investigate alternative technologies:
   consider cue as a task description language
   consider dhall as a task description language
   consider jsonnet as a task description language
+  could the experimental forward build section of shake and/or rattle be helpful?
 
 start writing docs in haddock:
   read https://mmhaskell.com/blog/comments-in-haskell
@@ -26,6 +27,21 @@ Tasks:
 hot reloading:
   see how hard it would be to do something like in gitit
   compiling each time wouldn't be so bad to start if necessary
+
+testing:
+  go with similar to ortholang by default (tasty, hspec?)
+  but check first what's currently popular
+
+command running:
+  can you base a lot of this on ortholang too?
+  also check how git-annex does it
+
+tree traversals:
+  base on gander by default
+  but check first what's currently popular
+  ideally you'll be able to merge/interoperate them later
+  go with haskell tree traversals first
+  you can restrict them to emulate regex etc later
 
 <no location info>: warning: [-Wmissed-extra-shared-lib]
     libz.so: cannot open shared object file: No such file or directory
