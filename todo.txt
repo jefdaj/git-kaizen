@@ -1,3 +1,5 @@
+upload to github and gitlab?
+
 investigate alternative technologies:
   check that ansible playbooks don't basically do what you want before continuing
   consider cue as a task description language
