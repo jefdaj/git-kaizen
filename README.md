@@ -1,4 +1,4 @@
-# file-kaizen
+# git-kaizen
 
 ## Theory
 
@@ -10,7 +10,7 @@ you can...
    codify it as a script. You define the commands to run along with input and
    output filename patterns.
 
-2. Later, `file-kaizen` will suggest running the script on other matching files.
+2. Later, `git-kaizen` will suggest running the script on other matching files.
    You have a growing menu of "next steps" for various situations.
 
 3. As with a build system, the real magic is in chaining steps together.

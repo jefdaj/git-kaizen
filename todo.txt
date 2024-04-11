@@ -1,4 +1,3 @@
-files-kaizen or file-kaizen?
 check that ansible playbooks don't basically do what you want before continuing
 read https://mmhaskell.com/blog/comments-in-haskell
 read https://haskell-haddock.readthedocs.io/en/latest/markup.html

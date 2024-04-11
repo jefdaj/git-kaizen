@@ -3,7 +3,7 @@ module Tasks.Untar where
 import Lib.Types
 import System.FilePath.Posix (dropExtension)
 
--- TODO call this data type FileKaizen? Kaizen?
+-- TODO call this data type GitKaizen? Kaizen?
 task :: Task
 task = Task
   { taskName = "untar"
