@@ -20,6 +20,7 @@ dependencies:
   - ghc-paths
   - filepath
   - filepattern
+  - split
 
 library:
   source-dirs: lib

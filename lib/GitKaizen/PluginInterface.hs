@@ -1,6 +1,7 @@
 module GitKaizen.PluginInterface
   ( Plugin(..)
   , InPattern(..)
+  , Priority(..)
   )
   where
 

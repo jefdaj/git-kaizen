@@ -23,3 +23,7 @@ data Plugin = Plugin
     -- TODO actual command.. shelly? turtle? system thing?
     , taskCommand    :: [String] -> [String] -> IO ()
     }
+
+-- | Experiment with determining plugin priority via filename, Unix style
+newtype Priority = Priority Int
+  deriving Show

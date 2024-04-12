@@ -30,4 +30,4 @@ main = do
   when (args `isPresent` (command "load")) $ do
     pluginsDir <- args `getArgOrExit` (argument "pluginsdir")
     plugins <- loadPlugins pluginsDir
-    putStrLn $ "plugins: " ++ show (map taskName plugins)
+    putStrLn $ "plugins: " ++ show (map (\(a,b) -> (taskName a, b)) plugins)

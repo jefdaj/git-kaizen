@@ -10,5 +10,5 @@ src/Main
 
 # dynamic plugin loading
 # TODO move these files?
-plugins/*.hi
-plugins/*.o
+*.hi
+*.o
