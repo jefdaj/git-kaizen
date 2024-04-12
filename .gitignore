@@ -7,3 +7,8 @@ src/Main
 
 # dhall
 .history
+
+# dynamic plugin loading
+# TODO move these files?
+plugins/*.hi
+plugins/*.o
