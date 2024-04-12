@@ -6,7 +6,6 @@ maintainer:          jefdaj@users.noreply.github.com
 copyright:           "MIT"
 
 data-files:
-  - tests/untar/*
   - examples/*/*/*.hs
 
 dependencies:
@@ -21,6 +20,7 @@ dependencies:
   - pretty-simple
   - split
   - tasty
+  - tasty-discover
   - text
 
 library:
@@ -34,3 +34,10 @@ executable:
   main: Main.hs
   dependencies:
   - git-kaizen
+
+tests:
+  test:
+    main: "Test.hs"
+    source-dirs: "test"
+    dependencies:
+    - "base"
