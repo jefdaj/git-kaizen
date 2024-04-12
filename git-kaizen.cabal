@@ -19,8 +19,8 @@ data-files:
 
 library
   exposed-modules:
-      GitKaizen.Types
       GitKaizen.Interface
+      GitKaizen.Types
   other-modules:
       Paths_git_kaizen
   hs-source-dirs:
@@ -35,6 +35,7 @@ library
     , ghc-paths
     , pretty-simple
     , split
+    , tasty
     , text
   default-language: Haskell2010
 
@@ -56,5 +57,6 @@ executable git-kaizen
     , git-kaizen
     , pretty-simple
     , split
+    , tasty
     , text
   default-language: Haskell2010

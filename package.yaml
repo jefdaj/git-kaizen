@@ -20,6 +20,7 @@ dependencies:
   - ghc-paths
   - pretty-simple
   - split
+  - tasty
   - text
 
 library:
