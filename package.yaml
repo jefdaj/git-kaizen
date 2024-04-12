@@ -18,6 +18,14 @@ dependencies:
   - ghc
   - ghc-paths
 
+library:
+  source-dirs: lib
+  exposed-modules:
+  - GitKaizen.Types
+  - GitKaizen.Interface
+
 executable:
-  source-dirs: src
+  source-dirs: app
   main: GitKaizen.hs
+  dependencies:
+  - git-kaizen

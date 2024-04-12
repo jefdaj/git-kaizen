@@ -30,12 +30,10 @@ loadPlugin pluginName = do
                      then "Network.Gitit.Plugin." ++ takeBaseName pluginName
                      else takeBaseName pluginName
     pr <- parseImportDecl "import Prelude"
-    -- TODO figure out my equivalent of this
-    -- i <- parseImportDecl "import GitKaizen.Interface"
+    i <- parseImportDecl "import GitKaizen.Interface" -- TODO why is this required?
     m <- parseImportDecl ("import " ++ modName)
-    -- setContext [IIDecl m, IIDecl  i, IIDecl pr]
-    setContext [IIDecl m, IIDecl pr]
-    value <- compileExpr (modName ++ ".task :: Plugin")
+    setContext [IIDecl m, IIDecl  i, IIDecl pr]
+    value <- compileExpr (modName ++ ".plugin :: Plugin")
     let value' = (unsafeCoerce value) :: Plugin
     return value'
 
