@@ -61,9 +61,16 @@ loadKaizens kaizenDir = do
   -- unless (null kaizenNames) $ logM "gitit" WARNING "Finished loading kaizens."
   return kaizens'
 
+-- | Test loading the backups example.
 unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
   ((v,p):ks) <- loadKaizens =<< getDataFileName "examples/backups/kaizen.d"
   length ks @?= 0
   kzName v @?= "untar"
   p @?= (Priority 3)
+
+-- | Test loading the etc-or-dotfiles example. Fails as there are no files yet.
+unit_loadExamplesEtcOrDotfiles :: Assertion
+unit_loadExamplesEtcOrDotfiles = do
+  ks <- loadKaizens =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
+  length ks @?= 0
