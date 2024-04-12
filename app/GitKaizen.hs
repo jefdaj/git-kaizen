@@ -26,5 +26,8 @@ main :: IO ()
 main = do
   args <- parseArgsOrExit patterns =<< getArgs
   print args
-  plugins <- loadPlugins "plugins"
-  putStrLn $ "plugins: " ++ show (map taskName plugins)
+
+  when (args `isPresent` (command "load")) $ do
+    pluginsDir <- args `getArgOrExit` (argument "pluginsdir")
+    plugins <- loadPlugins pluginsDir
+    putStrLn $ "plugins: " ++ show (map taskName plugins)
