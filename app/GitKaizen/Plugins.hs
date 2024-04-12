@@ -11,6 +11,7 @@ import Unsafe.Coerce
 import System.FilePath ((</>))
 import System.FilePattern.Directory (FilePattern, getDirectoryFiles)
 
+-- Plugin code is mainly based on jgm/gitit
 loadPlugin :: FilePath -> IO Plugin
 loadPlugin pluginPath = do
   -- logM "gitit" WARNING ("Loading plugin '" ++ pluginName ++ "'...")
