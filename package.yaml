@@ -7,7 +7,7 @@ copyright:           "MIT"
 
 data-files:
   - tests/untar/*
-  - examples/*/*.hs
+  - examples/*/*/*.hs
 
 dependencies:
   - base

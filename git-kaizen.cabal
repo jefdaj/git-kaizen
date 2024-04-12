@@ -15,7 +15,7 @@ license-file:   LICENSE
 build-type:     Simple
 data-files:
     tests/untar/untar1.txt.tar
-    examples/backups/Untar.hs
+    examples/backups/kaizen.d/Untar.hs
 
 library
   exposed-modules:
