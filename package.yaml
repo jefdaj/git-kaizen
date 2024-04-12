@@ -39,17 +39,17 @@ executable:
 
 tests:
 
-  lib-test:
+  test-lib:
     source-dirs:
-    - "lib-test"
+    - "test/lib"
     - "lib"
     main: "Test.hs"
     dependencies:
     - "base"
 
-  app-test:
+  test-app:
     source-dirs:
-    - "app-test"
+    - "test/app"
     - "app"
     main: "Test.hs"
     dependencies:
