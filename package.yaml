@@ -21,6 +21,7 @@ dependencies:
   - split
   - tasty
   - tasty-discover
+  - tasty-quickcheck
   - text
 
 library:
@@ -37,7 +38,7 @@ executable:
 
 tests:
   test:
-    main: "Test.hs"
+    main: "Main.hs"
     source-dirs: "test"
     dependencies:
     - "base"
