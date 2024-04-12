@@ -21,6 +21,7 @@ dependencies:
   - split
   - tasty
   - tasty-discover
+  - tasty-hunit
   - tasty-quickcheck
   - text
 
@@ -37,8 +38,19 @@ executable:
   - git-kaizen
 
 tests:
-  test:
-    main: "Main.hs"
-    source-dirs: "test"
+
+  # test-lib:
+  #   source-dirs: "lib"
+  #   main: "Test.hs"
+  #   dependencies:
+  #   - "base"
+  #   - "git-kaizen"
+
+  test-lib:
+    source-dirs:
+    - "lib"
+    - "test"
+    main: "Test.hs"
     dependencies:
     - "base"
+    - "git-kaizen"
