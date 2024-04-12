@@ -6,7 +6,7 @@
 
 module Main where
 
-import GitKaizen.Load
+import Load
 import GitKaizen.Types
 import Paths_git_kaizen
 

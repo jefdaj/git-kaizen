@@ -44,7 +44,7 @@ library
 executable git-kaizen
   main-is: Main.hs
   other-modules:
-      GitKaizen.Load
+      Load
       Paths_git_kaizen
   hs-source-dirs:
       app
@@ -70,7 +70,7 @@ test-suite app-test
   type: exitcode-stdio-1.0
   main-is: Test.hs
   other-modules:
-      GitKaizen.Load
+      Load
       Main
       Paths_git_kaizen
   hs-source-dirs:
