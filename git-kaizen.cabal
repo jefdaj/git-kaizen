@@ -66,15 +66,15 @@ executable git-kaizen
     , text
   default-language: Haskell2010
 
-test-suite test-app
+test-suite app-test
   type: exitcode-stdio-1.0
-  main-is: TestApp.hs
+  main-is: Test.hs
   other-modules:
       GitKaizen.Load
       Main
       Paths_git_kaizen
   hs-source-dirs:
-      test-app
+      app-test
       app
   build-depends:
       base
@@ -94,15 +94,15 @@ test-suite test-app
     , text
   default-language: Haskell2010
 
-test-suite test-lib
+test-suite lib-test
   type: exitcode-stdio-1.0
-  main-is: TestLib.hs
+  main-is: Test.hs
   other-modules:
       GitKaizen.Interface
       GitKaizen.Types
       Paths_git_kaizen
   hs-source-dirs:
-      test-lib
+      lib-test
       lib
   build-depends:
       base

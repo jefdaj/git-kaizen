@@ -39,19 +39,19 @@ executable:
 
 tests:
 
-  test-lib:
+  lib-test:
     source-dirs:
-    - "test-lib"
+    - "lib-test"
     - "lib"
-    main: "TestLib.hs"
+    main: "Test.hs"
     dependencies:
     - "base"
 
-  test-app:
+  app-test:
     source-dirs:
-    - "test-app"
+    - "app-test"
     - "app"
-    main: "TestApp.hs"
+    main: "Test.hs"
     dependencies:
     - "base"
     - "git-kaizen"
