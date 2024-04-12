@@ -23,7 +23,7 @@ library
   other-modules:
       Paths_git_kaizen
   hs-source-dirs:
-      lib
+      src/lib
   build-depends:
       base
     , dhall
@@ -47,7 +47,7 @@ executable git-kaizen
       Load
       Paths_git_kaizen
   hs-source-dirs:
-      app
+      src/app
   build-depends:
       base
     , dhall
@@ -75,7 +75,7 @@ test-suite test-app
       Paths_git_kaizen
   hs-source-dirs:
       test/app
-      app
+      src/app
   build-depends:
       base
     , dhall
@@ -103,7 +103,7 @@ test-suite test-lib
       Paths_git_kaizen
   hs-source-dirs:
       test/lib
-      lib
+      src/lib
   build-depends:
       base
     , dhall
