@@ -6,10 +6,9 @@
 
 module Main where
 
+import GitKaizen.Load
 import GitKaizen.Types
 import Paths_git_kaizen
-
-import Load
 
 import System.Environment (getArgs)
 import System.Console.Docopt

@@ -41,17 +41,17 @@ tests:
 
   test-lib:
     source-dirs:
-    - "test"
+    - "test-lib"
     - "lib"
     main: "TestLib.hs"
     dependencies:
     - "base"
 
-  # test-app:
-  #   source-dirs:
-  #   - "app"
-  #   - "test"
-  #   main: "TestApp.hs"
-  #   dependencies:
-  #   - "base"
-  #   - "git-kaizen"
+  test-app:
+    source-dirs:
+    - "test-app"
+    - "app"
+    main: "TestApp.hs"
+    dependencies:
+    - "base"
+    - "git-kaizen"

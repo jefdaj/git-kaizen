@@ -1,6 +1,6 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Load where
+module GitKaizen.Load where
 
 import Test.Tasty
 import Test.Tasty.QuickCheck

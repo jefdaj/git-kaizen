@@ -13,9 +13,9 @@ import Test.Tasty
 import Test.Tasty.QuickCheck
 
 -- QuickCheck property
-prop_additionCommutative :: Int -> Int -> Bool
-prop_additionCommutative a b = a + b == b + a
+prop_additionCommutativeInterface :: Int -> Int -> Bool
+prop_additionCommutativeInterface a b = a + b == b + a
 
 -- Tasty TestTree
-test_multiplication :: [TestTree]
-test_multiplication = [testProperty "One is identity" $ \(a :: Int) -> a * 1 == a]
+test_multiplicationInterface :: [TestTree]
+test_multiplicationInterface = [testProperty "One is identity" $ \(a :: Int) -> a * 1 == a]
