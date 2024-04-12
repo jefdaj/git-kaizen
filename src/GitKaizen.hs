@@ -26,4 +26,5 @@ main :: IO ()
 main = do
   args <- parseArgsOrExit patterns =<< getArgs
   print args
+  plugins <- loadPlugins ["plugins/Untar.hs"]
   putStrLn $ "plugins: " ++ show (map taskName plugins)

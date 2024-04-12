@@ -1,11 +1,11 @@
-module GitKaizen.Tasks.Untar where
+module Untar (plugin) where
 
 import GitKaizen.Types
 import System.FilePath.Posix (dropExtension)
 
 -- TODO call this data type GitKaizen? Kaizen?
-task :: Task
-task = Task
+plugin :: Plugin
+plugin = Plugin
   { taskName = "untar"
   , taskInPatterns = [GlobOne "*.tar*"]
   , taskOutPaths = outpaths

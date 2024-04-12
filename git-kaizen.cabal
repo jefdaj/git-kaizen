@@ -19,6 +19,7 @@ data-files:
 executable git-kaizen
   main-is: GitKaizen.hs
   other-modules:
+      GitKaizen.Interface
       GitKaizen.Plugins
       GitKaizen.Types
       Paths_git_kaizen
