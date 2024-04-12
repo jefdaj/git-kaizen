@@ -13,20 +13,20 @@ dependencies:
   - base
   - dhall
   - docopt
-  - pretty-simple
-  - text
   - filepath
-  - ghc
-  - ghc-paths
   - filepath
   - filepattern
+  - ghc
+  - ghc-paths
+  - pretty-simple
   - split
+  - text
 
 library:
   source-dirs: lib
   exposed-modules:
-  - GitKaizen.Types
   - GitKaizen.Interface
+  - GitKaizen.Types
 
 executable:
   source-dirs: app
