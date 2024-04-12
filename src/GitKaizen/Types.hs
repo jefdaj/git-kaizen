@@ -13,7 +13,8 @@ data InPattern
     deriving Show
 
 -- | Top level commment example
-data Task = Task
+-- TODO rename back to Task, or something better
+data Plugin = Plugin
     { taskName       :: String
     , taskInPatterns :: [InPattern]
     , taskOutPaths   :: [String] -> [String]

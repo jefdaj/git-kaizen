@@ -7,7 +7,7 @@
 module Main where
 
 import GitKaizen.Types
-import GitKaizen.Tasks
+import GitKaizen.Plugins
 import Paths_git_kaizen
 
 import System.Environment (getArgs)
@@ -26,4 +26,4 @@ main :: IO ()
 main = do
   args <- parseArgsOrExit patterns =<< getArgs
   print args
-  putStrLn $ "tasks: " ++ show (map taskName tasks)
+  putStrLn $ "plugins: " ++ show (map taskName plugins)
