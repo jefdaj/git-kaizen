@@ -1,2 +1,2 @@
 Usage:
-  git-kaizen load <pluginsdir>
+  git-kaizen load <kaizendir>

@@ -1,5 +1,5 @@
-module GitKaizen.PluginInterface
-  ( Plugin(..)
+module GitKaizen.Interface
+  ( Kaizen(..)
   , InPattern(..)
   , Priority(..)
   )

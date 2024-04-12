@@ -20,7 +20,7 @@ data-files:
 library
   exposed-modules:
       GitKaizen.Types
-      GitKaizen.PluginInterface
+      GitKaizen.Interface
   other-modules:
       Paths_git_kaizen
   hs-source-dirs:
@@ -41,7 +41,7 @@ library
 executable git-kaizen
   main-is: GitKaizen.hs
   other-modules:
-      GitKaizen.Plugins
+      GitKaizen.Load
       Paths_git_kaizen
   hs-source-dirs:
       app

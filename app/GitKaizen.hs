@@ -7,7 +7,7 @@
 module Main where
 
 import GitKaizen.Types
-import GitKaizen.Plugins
+import GitKaizen.Load
 import Paths_git_kaizen
 
 import System.Environment (getArgs)
@@ -28,6 +28,6 @@ main = do
   print args
 
   when (args `isPresent` (command "load")) $ do
-    pluginsDir <- args `getArgOrExit` (argument "pluginsdir")
-    plugins <- loadPlugins pluginsDir
-    putStrLn $ "plugins: " ++ show (map (\(a,b) -> (taskName a, b)) plugins)
+    kaizenDir <- args `getArgOrExit` (argument "kaizendir")
+    kaizens <- loadKaizens kaizenDir
+    putStrLn $ "kaizens: " ++ show (map (\(a,b) -> (kzName a, b)) kaizens)

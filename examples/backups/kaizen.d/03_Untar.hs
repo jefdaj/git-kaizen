@@ -1,17 +1,16 @@
-module GitKaizen.Plugins.Untar (plugin) where
+module Untar (kaizen) where
 
-import GitKaizen.PluginInterface
+import GitKaizen.Interface
 import System.FilePath.Posix (dropExtension)
 
--- TODO call this data type GitKaizen? Kaizen?
-plugin :: Plugin
-plugin = Plugin
-  { taskName = "untar"
-  , taskInPatterns = [GlobOne "*.tar*"]
-  , taskOutPaths = outpaths
-  , taskDescribe = desc
-  , taskGuard = guard
-  , taskCommand = undefined -- TODO write this
+kaizen :: Kaizen
+kaizen = Kaizen
+  { kzName = "untar"
+  , kzInPatterns = [GlobOne "*.tar*"]
+  , kzOutPaths = outpaths
+  , kzDescribe = desc
+  , kzGuard = guard
+  , kzCommand = undefined -- TODO write this
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?
