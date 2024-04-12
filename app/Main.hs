@@ -4,6 +4,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
+{-
+Note that this is the only module where we can't embed Tasty tests,
+because the generated tasty-discover module also calls itself Main.
+So I try to keep it minimal and move all non-trivial code elsewhere.
+TODO is that my own misconfiguration? is it fixable? open an issue with tasty-discover
+-}
+
 module Main where
 
 import Load
