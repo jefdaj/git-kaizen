@@ -18,7 +18,7 @@ loadPlugin pluginName = do
     -- initDynFlags
     unless ("Network.Gitit.Plugin." `isPrefixOf` pluginName)
       $ do
-          addTarget =<< guessTarget pluginName Nothing
+          addTarget =<< guessTarget pluginName Nothing Nothing
           r <- load LoadAllTargets
           case r of
             Failed -> error $ "Error loading plugin: " ++ pluginName
