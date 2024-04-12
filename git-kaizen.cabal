@@ -44,7 +44,6 @@ library
 executable git-kaizen
   main-is: Main.hs
   other-modules:
-      Example1
       Load
       Paths_git_kaizen
   hs-source-dirs:
@@ -69,14 +68,14 @@ executable git-kaizen
 
 test-suite test-lib
   type: exitcode-stdio-1.0
-  main-is: Test.hs
+  main-is: TestLib.hs
   other-modules:
       GitKaizen.Interface
       GitKaizen.Types
       Paths_git_kaizen
   hs-source-dirs:
-      lib
       test
+      lib
   build-depends:
       base
     , dhall
@@ -85,7 +84,6 @@ test-suite test-lib
     , filepattern
     , ghc
     , ghc-paths
-    , git-kaizen
     , pretty-simple
     , split
     , tasty

@@ -1,4 +1,9 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+
 module Load where
+
+import Test.Tasty
+import Test.Tasty.QuickCheck
 
 import GitKaizen.Types (Kaizen, Priority(..))
 
@@ -52,3 +57,11 @@ loadKaizens kaizenDir = do
   kaizens' <- mapM loadKaizen kaizenPaths
   -- unless (null kaizenNames) $ logM "gitit" WARNING "Finished loading kaizens."
   return kaizens'
+
+-- QuickCheck property
+prop_additionCommutativeLoad :: Int -> Int -> Bool
+prop_additionCommutativeLoad a b = a + b == b + a
+
+-- Tasty TestTree
+test_multiplicationLoad :: [TestTree]
+test_multiplicationLoad = [testProperty "One is identity" $ \(a :: Int) -> a * 1 == a]
