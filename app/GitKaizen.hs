@@ -22,6 +22,9 @@ patterns = [docoptFile|usage.txt|]
 
 getArgOrExit = getArgOrExitWith patterns
 
+-- | Does this also go in the Haddock, maybe somewhere else?
+--   Ah, this is just recently fixed in Stack so it's coming soon.
+--   Should be able to start writing the comments and assume it'll work.
 main :: IO ()
 main = do
   args <- parseArgsOrExit patterns =<< getArgs
