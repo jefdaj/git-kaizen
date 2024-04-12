@@ -13,7 +13,7 @@ import System.FilePattern.Directory (FilePattern, getDirectoryFiles)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 
--- Code is mainly based on loadKaizens from jgm/gitit
+-- Code is mainly based on loadPlugins from jgm/gitit
 loadKaizen :: FilePath -> IO (Kaizen, Priority)
 loadKaizen kaizenPath = do
   -- logM "gitit" WARNING ("Loading kaizen '" ++ kaizenName ++ "'...")
