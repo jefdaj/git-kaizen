@@ -39,9 +39,9 @@ library
   default-language: Haskell2010
 
 executable git-kaizen
-  main-is: GitKaizen.hs
+  main-is: Main.hs
   other-modules:
-      GitKaizen.Load
+      Load
       Paths_git_kaizen
   hs-source-dirs:
       app

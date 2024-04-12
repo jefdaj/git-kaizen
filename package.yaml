@@ -30,6 +30,6 @@ library:
 
 executable:
   source-dirs: app
-  main: GitKaizen.hs
+  main: Main.hs
   dependencies:
   - git-kaizen

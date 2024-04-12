@@ -1,4 +1,4 @@
-module GitKaizen.Load where
+module Load where
 
 import GitKaizen.Types (Kaizen, Priority(..))
 
