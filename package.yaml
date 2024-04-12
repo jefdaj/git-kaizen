@@ -17,6 +17,8 @@ dependencies:
   - filepath
   - ghc
   - ghc-paths
+  - filepath
+  - filepattern
 
 library:
   source-dirs: lib

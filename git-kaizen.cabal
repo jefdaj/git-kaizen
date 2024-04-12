@@ -29,6 +29,7 @@ library
     , dhall
     , docopt
     , filepath
+    , filepattern
     , ghc
     , ghc-paths
     , pretty-simple
@@ -47,6 +48,7 @@ executable git-kaizen
     , dhall
     , docopt
     , filepath
+    , filepattern
     , ghc
     , ghc-paths
     , git-kaizen
