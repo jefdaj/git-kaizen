@@ -1,11 +1,13 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module GitKaizen.Interface where
-  -- ( Kaizen(..)
-  -- , InPattern(..)
-  -- , Priority(..)
-  -- )
-  -- where
+module GitKaizen.Interface
+  ( Kaizen(..)
+  , InPattern(..)
+  , Priority(..)
+  , prop_additionCommutativeInterface
+  , test_multiplicationInterface
+  )
+  where
 
 import GitKaizen.Types
 
