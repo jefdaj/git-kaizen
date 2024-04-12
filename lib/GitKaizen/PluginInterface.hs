@@ -1,5 +1,6 @@
-module GitKaizen.Interface
+module GitKaizen.PluginInterface
   ( Plugin(..)
+  , InPattern(..)
   )
   where
 

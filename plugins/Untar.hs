@@ -1,7 +1,6 @@
-module Untar (plugin) where
+module GitKaizen.Plugins.Untar (plugin) where
 
-import GitKaizen.Types
-
+import GitKaizen.PluginInterface
 import System.FilePath.Posix (dropExtension)
 
 -- TODO call this data type GitKaizen? Kaizen?

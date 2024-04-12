@@ -32,9 +32,9 @@ loadPlugin pluginPath = do
     --          else if "Network/Gitit/Plugin/" `isInfixOf` pluginName
     --                  then "Network.Gitit.Plugin." ++ takeBaseName pluginName
     --                  else takeBaseName pluginName
-    let modName = takeBaseName pluginPath
+    let modName = "GitKaizen.Plugins." ++ takeBaseName pluginPath
     pr <- parseImportDecl "import Prelude"
-    i <- parseImportDecl "import GitKaizen.Interface" -- TODO why is this required?
+    i <- parseImportDecl "import GitKaizen.PluginInterface" -- TODO why is this required?
     m <- parseImportDecl ("import " ++ modName)
     setContext [IIDecl m, IIDecl  i, IIDecl pr]
     value <- compileExpr (modName ++ ".plugin :: Plugin")

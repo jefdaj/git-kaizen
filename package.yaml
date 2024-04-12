@@ -24,7 +24,7 @@ library:
   source-dirs: lib
   exposed-modules:
   - GitKaizen.Types
-  - GitKaizen.Interface
+  - GitKaizen.PluginInterface
 
 executable:
   source-dirs: app
