@@ -10,7 +10,7 @@ module GitKaizen.Types where
 data InPattern
     = GlobOne String -- ^ Glob and invoke kaizen once per match
     | GlobAll String -- ^ Glob and invoke kaizen once with a list of matches
-    deriving Show
+    deriving (Show, Eq)
 
 -- | Top level commment example
 data Kaizen = Kaizen
@@ -25,4 +25,4 @@ data Kaizen = Kaizen
 
 -- | Experiment with determining kaizen priority via filename, Unix style
 newtype Priority = Priority Int
-  deriving Show
+  deriving (Show, Eq)

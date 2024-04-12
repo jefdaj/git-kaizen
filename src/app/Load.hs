@@ -3,9 +3,10 @@
 module Load where
 
 import Test.Tasty
+import Test.Tasty.HUnit
 import Test.Tasty.QuickCheck
 
-import GitKaizen.Types (Kaizen, Priority(..))
+import GitKaizen.Types (Kaizen(..), Priority(..))
 
 import System.FilePath (takeBaseName)
 import Control.Monad (unless)
@@ -17,6 +18,8 @@ import System.FilePath ((</>))
 import System.FilePattern.Directory (FilePattern, getDirectoryFiles)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
+
+import Paths_git_kaizen
 
 -- Code is mainly based on loadPlugins from jgm/gitit
 loadKaizen :: FilePath -> IO (Kaizen, Priority)
@@ -58,10 +61,9 @@ loadKaizens kaizenDir = do
   -- unless (null kaizenNames) $ logM "gitit" WARNING "Finished loading kaizens."
   return kaizens'
 
--- QuickCheck property
-prop_additionCommutativeLoad :: Int -> Int -> Bool
-prop_additionCommutativeLoad a b = a + b == b + a
-
--- Tasty TestTree
-test_multiplicationLoad :: [TestTree]
-test_multiplicationLoad = [testProperty "One is identity" $ \(a :: Int) -> a * 1 == a]
+unit_loadExamplesBackups :: Assertion
+unit_loadExamplesBackups = do
+  ((v,p):ks) <- loadKaizens =<< getDataFileName "examples/backups/kaizen.d"
+  length ks @?= 0
+  kzName v @?= "untar"
+  p @?= (Priority 3)
