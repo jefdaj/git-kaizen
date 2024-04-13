@@ -36,15 +36,10 @@ getArgOrExit = getArgOrExitWith patterns
 --   Should be able to start writing the comments and assume it'll work.
 main :: IO ()
 main = do
-
-  logStringStdout <& "starting main"
-
+  let log = logStringStdout -- TODO customize it
   args <- parseArgsOrExit patterns =<< getArgs
-  print args
-
+  log <& ("args: " ++ show args)
   when (args `isPresent` (command "load")) $ do
     kaizenDir <- args `getArgOrExit` (argument "kaizendir")
-    kaizens <- loadKaizens kaizenDir
-    putStrLn $ "kaizens: " ++ show (map (\(a,b) -> (kzName a, b)) kaizens)
-
-  logStringStdout <& "finished main"
+    kaizens <- loadKaizens log kaizenDir
+    log <& ("kaizens: " ++ show (map (\(a,b) -> (kzName a, b)) kaizens))

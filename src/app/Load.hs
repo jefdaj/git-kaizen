@@ -21,10 +21,12 @@ import Data.List.Split (splitOn)
 
 import Paths_git_kaizen
 
+import Colog.Core (LogAction(..), (<&), logStringStdout)
+
 -- Code is mainly based on loadPlugins from jgm/gitit
-loadKaizen :: FilePath -> IO (Kaizen, Priority)
-loadKaizen kaizenPath = do
-  -- logM "gitit" WARNING ("Loading kaizen '" ++ kaizenName ++ "'...")
+loadKaizen :: LogAction IO String -> FilePath -> IO (Kaizen, Priority)
+loadKaizen log kaizenPath = do
+  log <& ("loading kaizen " ++ kaizenPath)
   runGhc (Just libdir) $ do
     dflags <- getSessionDynFlags
     setSessionDynFlags dflags
@@ -54,25 +56,28 @@ loadKaizen kaizenPath = do
     return (value', priority)
 
 -- TODO proper plural of kaizen?
-loadKaizens :: FilePath -> IO [(Kaizen, Priority)]
-loadKaizens kaizenDir = do
+loadKaizens :: LogAction IO String -> FilePath -> IO [(Kaizen, Priority)]
+loadKaizens log kaizenDir = do
+  log <& ("loading kaizens from " ++ kaizenDir)
   kaizenPaths <- fmap (map (kaizenDir </>)) $ getDirectoryFiles kaizenDir ["*.hs"]
-  kaizens' <- mapM loadKaizen kaizenPaths
+  kaizens' <- mapM (loadKaizen log) kaizenPaths
   -- unless (null kaizenNames) $ logM "gitit" WARNING "Finished loading kaizens."
   return kaizens'
 
 -- | Test loading the backups example.
+-- TODO pass a no-logging logger here
 unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
-  ((v,p):ks) <- loadKaizens =<< getDataFileName "examples/backups/kaizen.d"
+  ((v,p):ks) <- loadKaizens logStringStdout =<< getDataFileName "examples/backups/kaizen.d"
   length ks @?= 0
   kzName v @?= "untar"
   p @?= (Priority 3)
 
 -- | Test loading the etc-or-dotfiles example.
+-- TODO pass a no-logging logger here
 unit_loadExamplesEtcOrDotfiles :: Assertion
 unit_loadExamplesEtcOrDotfiles = do
-  ((v,p):ks) <- loadKaizens =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
+  ((v,p):ks) <- loadKaizens logStringStdout =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
   length ks @?= 0
   kzName v @?= "untar2"
   p @?= (Priority 1)
