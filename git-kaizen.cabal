@@ -14,7 +14,7 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 data-files:
-    examples/backups/kaizen.d/03_Untar.hs
+    examples/backups/kaizen.d/01_GatherTarballs.hs
     examples/etc-or-dotfiles/kaizen.d/01_Untar2.hs
 
 library

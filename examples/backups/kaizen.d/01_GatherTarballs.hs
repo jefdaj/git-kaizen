@@ -1,11 +1,11 @@
-module Untar (kaizen) where
+module GatherTarballs (kaizen) where
 
 import GitKaizen.Interface
 import System.FilePath.Posix (dropExtension)
 
 kaizen :: Kaizen
 kaizen = Kaizen
-  { kzName = "untar"
+  { kzName = "gather tarballs"
   , kzInPatterns = [GlobOne "*.tar*"]
   , kzOutPaths = outpaths
   , kzDescribe = desc

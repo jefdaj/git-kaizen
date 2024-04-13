@@ -76,8 +76,8 @@ unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
   ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/backups/kaizen.d"
   length ks @?= 0
-  kzName v @?= "untar"
-  p @?= (Priority 3)
+  kzName v @?= "gather tarballs"
+  p @?= (Priority 1)
 
 -- | Test loading the etc-or-dotfiles example.
 -- TODO pass a no-logging logger here
