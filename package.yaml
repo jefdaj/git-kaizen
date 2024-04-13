@@ -6,7 +6,7 @@ maintainer:          jefdaj@users.noreply.github.com
 copyright:           "MIT"
 
 data-files:
-  - examples/*/*/*.hs
+  - examples/*/kaizen.d/*.hs
 
 dependencies:
   - base

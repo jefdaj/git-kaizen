@@ -69,8 +69,10 @@ unit_loadExamplesBackups = do
   kzName v @?= "untar"
   p @?= (Priority 3)
 
--- | Test loading the etc-or-dotfiles example. Fails as there are no files yet.
+-- | Test loading the etc-or-dotfiles example.
 unit_loadExamplesEtcOrDotfiles :: Assertion
 unit_loadExamplesEtcOrDotfiles = do
-  ks <- loadKaizens =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
+  ((v,p):ks) <- loadKaizens =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
   length ks @?= 0
+  kzName v @?= "untar2"
+  p @?= (Priority 1)
