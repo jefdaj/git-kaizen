@@ -22,6 +22,7 @@ import Data.List.Split (splitOn)
 import Paths_git_kaizen
 
 import Colog.Core (LogAction(..), (<&), logStringStdout)
+import Control.Monad.IO.Class (MonadIO)
 
 -- Code is mainly based on loadPlugins from jgm/gitit
 loadKaizen :: LogAction IO String -> FilePath -> IO (Kaizen, Priority)
@@ -64,11 +65,16 @@ loadKaizens log kaizenDir = do
   -- unless (null kaizenNames) $ logM "gitit" WARNING "Finished loading kaizens."
   return kaizens'
 
+-- | For disabling logs during unit tests.
+-- TODO where should this live?
+logNowhere :: MonadIO m => LogAction m String
+logNowhere = LogAction $ \_ -> return ()
+
 -- | Test loading the backups example.
 -- TODO pass a no-logging logger here
 unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
-  ((v,p):ks) <- loadKaizens logStringStdout =<< getDataFileName "examples/backups/kaizen.d"
+  ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/backups/kaizen.d"
   length ks @?= 0
   kzName v @?= "untar"
   p @?= (Priority 3)
@@ -77,7 +83,7 @@ unit_loadExamplesBackups = do
 -- TODO pass a no-logging logger here
 unit_loadExamplesEtcOrDotfiles :: Assertion
 unit_loadExamplesEtcOrDotfiles = do
-  ((v,p):ks) <- loadKaizens logStringStdout =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
+  ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
   length ks @?= 0
   kzName v @?= "untar2"
   p @?= (Priority 1)
