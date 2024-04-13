@@ -27,6 +27,7 @@ library
       src/lib
   build-depends:
       base
+    , co-log-core
     , dhall
     , docopt
     , filepath
@@ -51,6 +52,7 @@ executable git-kaizen
       src/app
   build-depends:
       base
+    , co-log-core
     , dhall
     , docopt
     , filepath
@@ -79,6 +81,7 @@ test-suite test-app
       src/app
   build-depends:
       base
+    , co-log-core
     , dhall
     , docopt
     , filepath
@@ -107,6 +110,7 @@ test-suite test-lib
       src/lib
   build-depends:
       base
+    , co-log-core
     , dhall
     , docopt
     , filepath
