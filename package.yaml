@@ -1,9 +1,9 @@
 name:                git-kaizen
-description:         Incrementally organize files and improve file-related workflows.
+description:         Incremental improvement of version controlled files.
 version:             1.0.0.0
 author:              jefdaj
 maintainer:          jefdaj@users.noreply.github.com
-copyright:           "MIT"
+copyright:           "AGPL-3.0-only"
 
 data-files:
   - examples/*/kaizen.d/*.hs
