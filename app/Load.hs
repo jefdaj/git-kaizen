@@ -68,7 +68,7 @@ unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
   ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/backups/kaizen.d"
   length ks @?= 0
-  kzName v @?= "gather tarballs"
+  kName v @?= "gather tarballs"
   p @?= (Priority 1)
 
 -- | Test loading the etc-or-dotfiles example.
@@ -77,5 +77,5 @@ unit_loadExamplesEtcOrDotfiles :: Assertion
 unit_loadExamplesEtcOrDotfiles = do
   ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
   length ks @?= 0
-  kzName v @?= "untar2"
+  kName v @?= "untar2"
   p @?= (Priority 1)

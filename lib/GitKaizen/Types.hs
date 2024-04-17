@@ -27,13 +27,13 @@ data InPattern2 = InPattern2
 
 -- | Top level commment example
 data Kaizen = Kaizen
-    { kzName       :: String
-    , kzInPatterns :: [InPattern]
-    , kzOutPaths   :: [String] -> [String]
-    , kzDescribe   :: [String] -> [String] -> String
-    , kzGuard      :: [String] -> [String] -> IO Bool
+    { kName       :: String
+    , kInPatterns :: [InPattern]
+    , kOutPaths   :: [String] -> [String]
+    , kDescribe   :: [String] -> [String] -> String
+    , kGuard      :: [String] -> [String] -> IO Bool
     -- TODO actual command.. shelly? turtle? system thing?
-    , kzCommand    :: [String] -> [String] -> IO ()
+    , kCommand    :: [String] -> [String] -> IO ()
     }
 
 -- | Experiment with determining kaizen priority via filename, Unix style

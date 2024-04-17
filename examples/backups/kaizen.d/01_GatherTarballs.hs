@@ -5,12 +5,12 @@ import System.FilePath.Posix (dropExtension)
 
 kaizen :: Kaizen
 kaizen = Kaizen
-  { kzName = "gather tarballs"
-  , kzInPatterns = [GlobOne "*.tar*"]
-  , kzOutPaths = outpaths
-  , kzDescribe = desc
-  , kzGuard = guard
-  , kzCommand = undefined -- TODO write this
+  { kName = "gather tarballs"
+  , kInPatterns = [GlobOne "*.tar*"]
+  , kOutPaths = outpaths
+  , kDescribe = desc
+  , kGuard = guard
+  , kCommand = undefined -- TODO write this
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?
