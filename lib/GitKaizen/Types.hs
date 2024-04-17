@@ -1,5 +1,6 @@
 module GitKaizen.Types where
 
+import Data.Default
 import System.FilePattern (FilePattern)
 
 -- TODO regexes, maybe with capture groups
@@ -24,6 +25,14 @@ data InPattern2 = InPattern2
     , ip2Recurse :: Bool -- ^ After finding a matching dir, should we also search inside it?
     }
     deriving (Read, Show, Eq)
+
+-- TODO sensible defaults
+instance Default InPattern2 where
+    def = InPattern2
+        { ip2Above = Nothing
+        , ip2Below = Nothing
+        , ip2Recurse = True
+        }
 
 -- | Top level commment example
 data Kaizen = Kaizen

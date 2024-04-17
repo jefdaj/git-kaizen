@@ -28,6 +28,7 @@ library
   build-depends:
       base
     , co-log-core
+    , data-default
     , dhall
     , docopt
     , filepath
@@ -53,6 +54,7 @@ executable git-kaizen
   build-depends:
       base
     , co-log-core
+    , data-default
     , dhall
     , docopt
     , filepath
@@ -82,6 +84,7 @@ test-suite test-app
   build-depends:
       base
     , co-log-core
+    , data-default
     , dhall
     , docopt
     , filepath
@@ -111,6 +114,7 @@ test-suite test-lib
   build-depends:
       base
     , co-log-core
+    , data-default
     , dhall
     , docopt
     , filepath
