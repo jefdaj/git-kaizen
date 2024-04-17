@@ -27,24 +27,15 @@ import Control.Monad.IO.Class (MonadIO)
 -- Code is mainly based on loadPlugins from jgm/gitit
 loadKaizen :: LogAction IO String -> FilePath -> IO (Kaizen, Priority)
 loadKaizen log kaizenPath = do
-  log <& ("loading kaizen " ++ kaizenPath)
+  log <& ("loading " ++ kaizenPath)
   runGhc (Just libdir) $ do
     dflags <- getSessionDynFlags
     setSessionDynFlags dflags
-    -- initDynFlags
-    -- unless ("Network.Gitit.Kaizen." `isPrefixOf` kaizenName)
-    -- $ do
     addTarget =<< guessTarget kaizenPath Nothing Nothing
     r <- load LoadAllTargets
     case r of
-      Failed -> error $ "Error loading kaizen: " ++ kaizenPath
+      Failed -> error $ "Error loading: " ++ kaizenPath
       Succeeded -> return ()
-    -- let modName =
-    --       if "Network.Gitit.Kaizen" `isPrefixOf` kaizenName
-    --          then kaizenName
-    --          else if "Network/Gitit/Kaizen/" `isInfixOf` kaizenName
-    --                  then "Network.Gitit.Kaizen." ++ takeBaseName kaizenName
-    --                  else takeBaseName kaizenName
     let (n:xs) = splitOn "_" $ takeBaseName kaizenPath
         priority = Priority $ read n -- TODO maybe version of this
         modName = intercalate "_" xs -- TODO can modules have _ in their names?
@@ -56,14 +47,15 @@ loadKaizen log kaizenPath = do
     let value' = (unsafeCoerce value) :: Kaizen
     return (value', priority)
 
--- TODO proper plural of kaizen?
+-- TODO is there a plural of kaizen? not sure how Japanese works
 loadKaizens :: LogAction IO String -> FilePath -> IO [(Kaizen, Priority)]
-loadKaizens log kaizenDir = do
-  log <& ("loading kaizens from " ++ kaizenDir)
-  kaizenPaths <- fmap (map (kaizenDir </>)) $ getDirectoryFiles kaizenDir ["*.hs"]
-  kaizens' <- mapM (loadKaizen log) kaizenPaths
-  -- unless (null kaizenNames) $ logM "gitit" WARNING "Finished loading kaizens."
-  return kaizens'
+loadKaizens log kDir = do
+  log <& ("loading from " ++ kDir)
+  -- TODO is there a cleaner ls function?
+  kPaths <- fmap (map (kDir </>)) $ getDirectoryFiles kDir ["*.hs"]
+  ks <- mapM (loadKaizen log) kPaths
+  unless (null ks) $ log <& "finished loading"
+  return ks
 
 -- | For disabling logs during unit tests.
 -- TODO where should this live?

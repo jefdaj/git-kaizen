@@ -3,6 +3,7 @@
 module GitKaizen.Interface
   ( Kaizen(..)
   , InPattern(..)
+  , InPattern2(..)
   , Priority(..)
   , prop_additionCommutativeInterface
   , test_multiplicationInterface
