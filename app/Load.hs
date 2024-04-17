@@ -9,7 +9,6 @@ import Test.Tasty.QuickCheck
 import GitKaizen.Types (Kaizen(..), Priority(..))
 
 import System.FilePath (takeBaseName)
-import Control.Monad (unless)
 import Data.List (isInfixOf, isPrefixOf)
 import GHC
 import GHC.Paths
@@ -54,7 +53,7 @@ loadKaizens log kDir = do
   -- TODO is there a cleaner ls function?
   kPaths <- fmap (map (kDir </>)) $ getDirectoryFiles kDir ["*.hs"]
   ks <- mapM (loadKaizen log) kPaths
-  unless (null ks) $ log <& "finished loading"
+  log <& "finished loading"
   return ks
 
 -- | For disabling logs during unit tests.
@@ -66,7 +65,8 @@ logNowhere = LogAction $ \_ -> return ()
 -- TODO pass a no-logging logger here
 unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
-  ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/backups/kaizen.d"
+  kDir <- getDataFileName "examples/backups/kaizen.d"
+  ((v,p):ks) <- loadKaizens logNowhere kDir
   length ks @?= 0
   kName v @?= "gather tarballs"
   p @?= (Priority 1)
@@ -75,7 +75,8 @@ unit_loadExamplesBackups = do
 -- TODO pass a no-logging logger here
 unit_loadExamplesEtcOrDotfiles :: Assertion
 unit_loadExamplesEtcOrDotfiles = do
-  ((v,p):ks) <- loadKaizens logNowhere =<< getDataFileName "examples/etc-or-dotfiles/kaizen.d"
+  kDir <- getDataFileName "examples/etc-or-dotfiles/kaizen.d"
+  ((v,p):ks) <- loadKaizens logNowhere kDir
   length ks @?= 0
   kName v @?= "untar2"
   p @?= (Priority 1)

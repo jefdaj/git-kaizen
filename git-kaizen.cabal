@@ -15,6 +15,7 @@ license-file:   LICENSE
 build-type:     Simple
 data-files:
     examples/backups/kaizen.d/01_GatherTarballs.hs
+    examples/backups/kaizen.d/02_GatherGitRepos.hs
     examples/etc-or-dotfiles/kaizen.d/01_Untar2.hs
 
 library
@@ -29,7 +30,6 @@ library
       base
     , co-log-core
     , data-default
-    , dhall
     , docopt
     , filepath
     , filepattern
@@ -55,7 +55,6 @@ executable git-kaizen
       base
     , co-log-core
     , data-default
-    , dhall
     , docopt
     , filepath
     , filepattern
@@ -85,7 +84,6 @@ test-suite test-app
       base
     , co-log-core
     , data-default
-    , dhall
     , docopt
     , filepath
     , filepattern
@@ -115,7 +113,6 @@ test-suite test-lib
       base
     , co-log-core
     , data-default
-    , dhall
     , docopt
     , filepath
     , filepattern

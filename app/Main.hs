@@ -19,7 +19,6 @@ import Paths_git_kaizen
 
 import System.Environment (getArgs)
 import System.Console.Docopt
--- import Dhall
 import Text.Pretty.Simple (pShow)
 import Control.Monad (when)
 import qualified Data.Text.IO as TIO

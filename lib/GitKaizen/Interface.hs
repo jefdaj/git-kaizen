@@ -12,8 +12,8 @@ module GitKaizen.Interface
 
 import GitKaizen.Types
 
-import Test.Tasty
-import Test.Tasty.QuickCheck
+import Test.Tasty (TestTree)
+import Test.Tasty.QuickCheck (testProperty)
 
 -- QuickCheck property
 prop_additionCommutativeInterface :: Int -> Int -> Bool
