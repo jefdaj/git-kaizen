@@ -1,5 +1,5 @@
 name:                git-kaizen
-description:         Incrementally organize files and improve file-related workflows.
+description:         Incremental improvement of version controlled files.
 version:             1.0.0.0
 author:              jefdaj
 maintainer:          jefdaj@users.noreply.github.com
@@ -31,6 +31,7 @@ library:
   exposed-modules:
   - GitKaizen.Interface
   - GitKaizen.Types
+  - GitKaizen.Search
 
 executable:
   source-dirs: app

@@ -6,11 +6,11 @@ cabal-version: 1.12
 
 name:           git-kaizen
 version:        1.0.0.0
-description:    Incrementally organize files and improve file-related workflows.
+description:    Incremental improvement of version-controlled files.
 author:         jefdaj
 maintainer:     jefdaj@users.noreply.github.com
-copyright:      MIT
-license:        MIT
+copyright:      AGPL-3.0-only
+license:        AGPL-3.0-only
 license-file:   LICENSE
 build-type:     Simple
 data-files:
@@ -104,6 +104,7 @@ test-suite test-lib
   main-is: Test.hs
   other-modules:
       GitKaizen.Interface
+      GitKaizen.Search
       GitKaizen.Types
       Paths_git_kaizen
   hs-source-dirs:
