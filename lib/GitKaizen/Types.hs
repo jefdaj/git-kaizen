@@ -16,6 +16,8 @@ data InPattern
     deriving (Read, Show, Eq)
 
 -- TODO would separate options for anchor + content matching handle everything?
+-- TODO mindepth, maxdepth? would fit well with RAM-limited bigtrees later
+-- TODO ignore patterns, or negative matches, if they aren't part of filepattern already
 data InPattern2 = InPattern2
     { ip2Above   :: Maybe FilePattern -- ^ Search the path above (to) this node from root
     , ip2Below   :: Maybe FilePattern -- ^ Treating this node as root, search the child paths below
