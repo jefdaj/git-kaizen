@@ -27,13 +27,13 @@ dependencies:
   - text
 
 library:
-  source-dirs: src/lib
+  source-dirs: lib
   exposed-modules:
   - GitKaizen.Interface
   - GitKaizen.Types
 
 executable:
-  source-dirs: src/app
+  source-dirs: app
   main: Main.hs
   dependencies:
   - git-kaizen
@@ -43,7 +43,7 @@ tests:
   test-lib:
     source-dirs:
     - "test/lib"
-    - "src/lib"
+    - "lib"
     main: "Test.hs"
     dependencies:
     - "base"
@@ -51,7 +51,7 @@ tests:
   test-app:
     source-dirs:
     - "test/app"
-    - "src/app"
+    - "app"
     main: "Test.hs"
     dependencies:
     - "base"
