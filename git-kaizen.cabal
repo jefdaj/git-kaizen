@@ -21,6 +21,7 @@ data-files:
 library
   exposed-modules:
       GitKaizen.Interface
+      GitKaizen.Search
       GitKaizen.Types
   other-modules:
       Paths_git_kaizen
@@ -104,6 +105,7 @@ test-suite test-lib
   main-is: Test.hs
   other-modules:
       GitKaizen.Interface
+      GitKaizen.Search
       GitKaizen.Types
       Paths_git_kaizen
   hs-source-dirs:

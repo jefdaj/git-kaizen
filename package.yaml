@@ -30,6 +30,7 @@ library:
   source-dirs: lib
   exposed-modules:
   - GitKaizen.Interface
+  - GitKaizen.Search
   - GitKaizen.Types
 
 executable:

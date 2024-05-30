@@ -8,7 +8,7 @@ you can...
 
 1. When you find yourself doing something repetitive with files, stop and try to
    codify it as a script. You define the commands to run along with input and
-   output filename patterns.
+   (optinal) output filename patterns.
 
 2. Later, `git-kaizen` will suggest running the script on other matching files.
    You have a growing menu of "next steps" for various situations.
