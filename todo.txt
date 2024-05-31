@@ -1,4 +1,26 @@
-upload to github and gitlab?
+minimum viable code to get it running:
+  Main
+    main
+    mainLoop
+  Git
+    confirmRepoClean
+    confirmExpectedChanges
+    commitChanges
+  CLI
+    userPickNextSteps
+    parseNextSteps
+    stopAndExplain
+    userAnswerYesNo
+    nextStepsProgressSpinner
+  Run
+    runListInputs
+    runListOutputs
+    runMainScript
+    setupTmpdir
+    teardownTmpdir
+    withCustomTmpdir
+    logging fn > kaizen.log in tmpdir
+    runNextSteps
 
 investigate alternative technologies:
   check that ansible playbooks don't basically do what you want before continuing
@@ -11,28 +33,10 @@ start writing docs in haddock:
   read https://mmhaskell.com/blog/comments-in-haskell
   read https://haskell-haddock.readthedocs.io/en/latest/markup.html
 
-logging:
-  consider katip
-  but default to using the same style as ortholang unless there's a good case for something else
-
 start config + docopt + logging based on Ortholang:
   Types.Config type
   loadConfig used in main
   Ortholang.Interpreter.Config ... how much of that would I need? seems very verbose now
-
-Tasks:
-  model them on ortholang Modules for now
-  start with a data type
-  add longer definitions below as needed
-  factor out library functions
-
-hot reloading:
-  see how hard it would be to do something like in gitit
-  compiling each time wouldn't be so bad to start if necessary
-
-testing:
-  go with similar to ortholang by default (tasty, hspec?)
-  but check first what's currently popular
 
 command running:
   can you base a lot of this on ortholang too?
@@ -44,9 +48,3 @@ tree traversals:
   ideally you'll be able to merge/interoperate them later
   go with haskell tree traversals first
   you can restrict them to emulate regex etc later
-
-<no location info>: warning: [-Wmissed-extra-shared-lib]
-    libz.so: cannot open shared object file: No such file or directory
-    It's OK if you don't want to use symbols from it directly.
-    (the package DLL is loaded by the system linker
-     which manages dependencies by itself).
