@@ -1,6 +1,6 @@
 name:                git-kaizen
 description:         Incremental improvement of version controlled files.
-version:             1.0.0.0
+version:             0.1.0.0
 author:              jefdaj
 maintainer:          jefdaj@users.noreply.github.com
 copyright:           "AGPL-3.0-only"
@@ -32,10 +32,7 @@ library:
   source-dirs: lib
   exposed-modules:
   - GitKaizen.Interface
-  - GitKaizen.Run
-  - GitKaizen.Search
   - GitKaizen.Types
-  - GitKaizen.Util
 
 executable:
   source-dirs: app

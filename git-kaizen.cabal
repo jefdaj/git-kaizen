@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           git-kaizen
-version:        1.0.0.0
+version:        0.1.0.0
 description:    Incremental improvement of version controlled files.
 author:         jefdaj
 maintainer:     jefdaj@users.noreply.github.com
@@ -23,10 +23,7 @@ data-files:
 library
   exposed-modules:
       GitKaizen.Interface
-      GitKaizen.Run
-      GitKaizen.Search
       GitKaizen.Types
-      GitKaizen.Util
   other-modules:
       Paths_git_kaizen
   hs-source-dirs:
@@ -55,6 +52,7 @@ executable git-kaizen
   other-modules:
       Load
       Run
+      Search
       Util
       Paths_git_kaizen
   hs-source-dirs:
@@ -86,6 +84,7 @@ test-suite test-app
       Load
       Main
       Run
+      Search
       Util
       Paths_git_kaizen
   hs-source-dirs:
@@ -116,7 +115,6 @@ test-suite test-lib
   main-is: Test.hs
   other-modules:
       GitKaizen.Interface
-      GitKaizen.Search
       GitKaizen.Types
       Paths_git_kaizen
   hs-source-dirs:
