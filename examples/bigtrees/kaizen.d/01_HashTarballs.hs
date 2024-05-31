@@ -24,16 +24,19 @@ kaizen = Kaizen
 
   }
 
-gitAnnexFind :: Maybe FilePath -> IO [FilePath]
+gitAnnexFind :: Maybe FilePath -> IO [[FilePath]]
 gitAnnexFind = undefined
 
 -- remove paths that already have a corresponding .bigtree file
 -- TODO move to Interface
 -- This should usually be the last thing in the list inputs pipeline,
 -- because you want the inputs properly grouped.
-notDone :: ListOutputsFn -> [FilePath] -> IO [FilePath]
+notDone :: ListOutputsFn -> [[FilePath]] -> IO [[FilePath]]
 -- notDone ps = filterM (\p -> (not . any) <$> doesFileExist $ outpaths p)
-notDone listOutputsFn inPaths = undefined -- filterM undefined ps
+notDone listOutputsFn inPathLists = flip filterM inPathLists $ \ps -> do
+  outPaths      <- listOutputsFn ps
+  outPathsExist <- mapM doesFileExist outPaths
+  return $ not $ all id outPathsExist
 
 -- TODO think this through a bit more, seems forced with the mapping :/
 

@@ -19,7 +19,7 @@ import System.FilePattern (FilePattern)
 -- TODO generalize to kListOutputs "results" and have fields like "added" and
 --      "removed"?  then this could be called preview
 
-type ListInputsFn  = Maybe FilePath -> IO [FilePath]
+type ListInputsFn  = Maybe FilePath -> IO [[FilePath]]
 type ListOutputsFn = [FilePath]     -> IO [FilePath]
 type MainScriptFn  = [FilePath]     -> IO () -- TODO return anything? exit code?
 
