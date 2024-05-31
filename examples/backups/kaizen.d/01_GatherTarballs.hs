@@ -10,7 +10,7 @@ kaizen = Kaizen
   , kMainScript  = \_ -> return () -- TODO write this
   }
 
-findTarballs :: Maybe FilePath -> IO [FilePath]
+findTarballs :: Maybe FilePath -> IO [[FilePath]]
 findTarballs = undefined
 
 removeAlreadyInOutdir :: [FilePath] -> IO [FilePath]

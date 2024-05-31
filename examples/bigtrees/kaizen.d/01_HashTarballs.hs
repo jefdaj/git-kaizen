@@ -1,4 +1,4 @@
-module GatherTarballs where
+module HashTarballs where
 
 import GitKaizen.Interface
 import Control.Monad (filterM, forM)
