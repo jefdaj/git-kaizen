@@ -14,6 +14,7 @@ TODO is that my own misconfiguration? is it fixable? open an issue with tasty-di
 module Main where
 
 import Load
+import Config (defaultConfig, overrideConfig)
 import GitKaizen.Types
 import Paths_git_kaizen
 
@@ -28,7 +29,7 @@ import Colog.Core (LogAction (..), (<&), logStringStdout)
 import Data.Text.Lazy (unpack)
 
 patterns :: Docopt
-patterns = [docoptFile|usage.txt|]
+patterns = [docoptFile|app/usage.txt|]
 
 getArgOrExit = getArgOrExitWith patterns
 
@@ -41,9 +42,11 @@ main = do
   let log = logStringStdout -- TODO customize it
   args <- parseArgsOrExit patterns =<< getArgs
   log <& ("args: " ++ (unpack . pShow) args)
-  when (args `isPresent` (command "load")) $ do
-    kDir <- args `getArgOrExit` (argument "kaizendir")
-    ks <- loadKaizens log kDir
-    log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
+  cfg  <- return . overrideConfig args =<< defaultConfig
+  log <& ("cfg: " ++ (unpack . pShow) cfg)
+  -- when (args `isPresent` (command "load")) $ do
+    -- kDir <- args `getArgOrExit` (argument "kaizendir")
+    -- ks <- loadKaizens log kDir
+    -- log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
 
 mainLoop = undefined
