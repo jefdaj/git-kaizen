@@ -7,11 +7,11 @@ import System.Directory (doesFileExist)
 kaizen :: Kaizen
 kaizen = Kaizen
 
-  -- TODO rename kDesc? name is really the basename without priority number
-  { kDesc = "bigtrees hash tarballs"
+  -- TODO rename kDescription? name is really the basename without priority number
+  { kDescription = "bigtrees hash tarballs"
 
   -- , kListInputs = [GlobOne "*.tar*"]
-  , kListInputs = \mp -> gitAnnexFind mp >>= notDone
+  , kListInputs = \mp -> gitAnnexFind mp >>= notDone outpaths
 
   -- This takes one group of input files and returns the corresponding output files.
   -- If you define it as a named fn below, you can also use it as part of list inputs.
@@ -20,7 +20,7 @@ kaizen = Kaizen
   , kListOutputs = \_ -> return []
 
   -- TODO rename kRunScript or similar?
-  , kMainScript = \_ _ -> return () -- TODO write this
+  , kMainScript = \_ -> return () -- TODO write this
 
   }
 
@@ -29,9 +29,11 @@ gitAnnexFind = undefined
 
 -- remove paths that already have a corresponding .bigtree file
 -- TODO move to Interface
-notDone :: [FilePath] -> IO [FilePath]
+-- This should usually be the last thing in the list inputs pipeline,
+-- because you want the inputs properly grouped.
+notDone :: ListOutputsFn -> ListOutputsFn
 -- notDone ps = filterM (\p -> (not . any) <$> doesFileExist $ outpaths p)
-notDone ps = filterM undefined ps
+notDone listOutputsFn inPaths = undefined -- filterM undefined ps
 
 -- TODO think this through a bit more, seems forced with the mapping :/
 
@@ -51,5 +53,5 @@ singletons = undefined -- return $ map $ \p -> [p]
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?
 --      then this could be called preview
-outpaths :: [FilePath] -> IO [FilePath]
+outpaths :: ListOutputsFn
 outpaths inpaths = return [dropExtension $ head inpaths]

@@ -4,10 +4,10 @@ import GitKaizen.Interface
 
 kaizen :: Kaizen
 kaizen = Kaizen
-  { kDesc = "gather git repos"
-  , kListInputs = \_ -> return []
+  { kDescription = "gather git repos"
+  , kListInputs  = \_ -> return []
   , kListOutputs = \_ -> return []
-  , kMainScript = \_ _ -> return () -- TODO write this
+  , kMainScript  = \_ -> return () -- TODO write this
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?

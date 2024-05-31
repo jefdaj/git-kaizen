@@ -19,14 +19,18 @@ import System.FilePattern (FilePattern)
 -- TODO generalize to kListOutputs "results" and have fields like "added" and
 --      "removed"?  then this could be called preview
 
+type ListInputsFn  = Maybe FilePath -> IO [FilePath]
+type ListOutputsFn = [FilePath]     -> IO [FilePath]
+type MainScriptFn  = [FilePath]     -> IO () -- TODO return anything? exit code?
+
 -- | Top level commment example
 data Kaizen = Kaizen
-    { kDesc        :: String
-    , kListInputs  :: Maybe FilePath -> IO [FilePath]
-    , kListOutputs :: [FilePath] -> IO [FilePath]
-    , kMainScript  :: [FilePath] -> [FilePath] -> IO ()
+    { kDescription :: String
+    , kListInputs  :: ListInputsFn
+    , kListOutputs :: ListOutputsFn
+    , kMainScript  :: MainScriptFn
 
-    -- TODO was this helpful? kDescribe   :: [String] -> [String] -> String
+    -- TODO was this helpful? kDescriptionribe   :: [String] -> [String] -> String
     -- TODO was this helpful? kGuard      :: [String] -> [String] -> IO Bool
     -- TODO actual command.. shelly? turtle? system thing?
     }

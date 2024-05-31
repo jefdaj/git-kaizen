@@ -4,11 +4,10 @@ import GitKaizen.Interface
 
 kaizen :: Kaizen
 kaizen = Kaizen
-  { kDesc = "untar2"
-  , kListInputs = \_ -> return [] -- [GlobOne "*.tar*"]
-  -- , kListOutputs = outpaths
+  { kDescription = "untar2"
+  , kListInputs  = \_ -> return [] -- [GlobOne "*.tar*"]
   , kListOutputs = \_ -> return []
-  , kMainScript = \_ _ -> return () -- TODO write this
+  , kMainScript  = \_ -> return () -- TODO write this
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?

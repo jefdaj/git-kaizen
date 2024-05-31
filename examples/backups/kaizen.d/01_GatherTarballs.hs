@@ -4,10 +4,10 @@ import GitKaizen.Interface
 
 kaizen :: Kaizen
 kaizen = Kaizen
-  { kDesc = "gather tarballs"
-  , kListInputs = findTarballs -- [GlobOne "*.tar*"]
+  { kDescription = "gather tarballs"
+  , kListInputs  = findTarballs -- [GlobOne "*.tar*"]
   , kListOutputs = toOutdirNoClobber "tarballs" -- TODO repo variable here?
-  , kMainScript = \_ _ -> return () -- TODO write this
+  , kMainScript  = \_ -> return () -- TODO write this
   }
 
 findTarballs :: Maybe FilePath -> IO [FilePath]
