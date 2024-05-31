@@ -1,6 +1,8 @@
 let
-  sources = import ./nix/sources.nix;
-  pkgs = import sources.nixpkgs { };
+  # pin when making an annotated tag/release:
+  # sources = import ./nix/sources.nix;
+  # pkgs = import sources.nixpkgs { };
+  pkgs = import <nixpkgs> {};
 in
 
 let
