@@ -22,7 +22,7 @@ kaizen = Kaizen
   -- , kListOutputs = \_ -> return []
 
   -- TODO rename kRunScript or similar?
-  , kMainScript = \_ -> return () -- TODO write this
+  , kMainScript = "hash-tarballs.sh" -- \_ -> return () -- TODO write this
 
   }
 

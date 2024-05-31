@@ -32,19 +32,24 @@ type ListInputsFn  = Maybe FilePath -> IO [[FilePath]]
 -- Take the inputs and actually run the script, hopefully producing the
 -- expected outputs.
 -- TODO git-kaizen should probably enforce that, right?
-type MainScriptFn  = [FilePath] -> IO () -- TODO return anything? exit code?
+-- type MainScriptFn  = [FilePath] -> IO () -- TODO return anything? exit code?
 
 -- | Top level commment example
 data Kaizen = Kaizen
     { kDescription :: String
     , kListInputs  :: ListInputsFn
     -- , kListOutputs :: ListOutputsFn
-    , kMainScript  :: MainScriptFn
+    , kMainScript  :: FilePath
 
     -- TODO was this helpful? kDescriptionribe   :: [String] -> [String] -> String
     -- TODO was this helpful? kGuard      :: [String] -> [String] -> IO Bool
     -- TODO actual command.. shelly? turtle? system thing?
     }
+
+-- | If I decide to add any other "script" types (haskell fns?),
+-- they'll go here.
+-- data Script = Script FilePath
+--   deriving (Read, Show, Eq)
 
 -- | Experiment with determining kaizen priority via filename, Unix style
 newtype Priority = Priority Int

@@ -4,9 +4,10 @@ module GitKaizen.Interface
 
   -- git-kaizen interface
   ( Kaizen(..)
+  -- , Script(..)
   , ListInputsFn
   -- , ListOutputsFn
-  , MainScriptFn
+  -- , MainScriptFn
   -- , InPattern(..)
   , Priority(..)
 

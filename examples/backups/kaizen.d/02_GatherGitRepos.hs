@@ -7,7 +7,7 @@ kaizen = Kaizen
   { kDescription = "gather git repos"
   , kListInputs  = \_ -> return []
   -- , kListOutputs = \_ -> return []
-  , kMainScript  = \_ -> return () -- TODO write this
+  , kMainScript  = "gather-git-repos.sh"
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?

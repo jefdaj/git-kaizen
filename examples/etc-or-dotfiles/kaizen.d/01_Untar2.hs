@@ -7,7 +7,7 @@ kaizen = Kaizen
   { kDescription = "untar2"
   , kListInputs  = \_ -> return [] -- [GlobOne "*.tar*"]
   -- , kListOutputs = \_ -> return []
-  , kMainScript  = \_ -> return () -- TODO write this
+  , kMainScript  = "untar2.sh"
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?

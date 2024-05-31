@@ -7,7 +7,7 @@ kaizen = Kaizen
   { kDescription = "gather tarballs"
   , kListInputs  = \mp -> findTarballs mp >>= return . singleton -- [GlobOne "*.tar*"]
   -- , kListOutputs = toOutdirNoClobber "tarballs" -- TODO repo variable here?
-  , kMainScript  = \_ -> return () -- TODO write this
+  , kMainScript  = "gather-tarballs.sh"
   }
 
 -- TODO is this simpler than a lambda? (maybe better for interface at least)
