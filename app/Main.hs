@@ -21,7 +21,7 @@ import Paths_git_kaizen
 import System.Environment (getArgs)
 import System.Console.Docopt
 import Text.Pretty.Simple (pShow)
-import Control.Monad (when)
+import Control.Monad (when, forM_)
 import qualified Data.Text.IO as TIO
 
 import Colog.Core (LogAction (..), (<&), logStringStdout)
@@ -46,5 +46,8 @@ main = do
   log <& ("cfg: " ++ (unpack . pShow) cfg)
   ks  <- loadKaizens log $ kaizenDir cfg
   log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
+  forM_ ks $ \(k,_) -> do
+    inputPaths <- (kListInputs k) (repoDir cfg) []
+    log <& ("inputPaths: " ++ (unpack . pShow) inputPaths)
 
 mainLoop = undefined

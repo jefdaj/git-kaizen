@@ -5,7 +5,7 @@ import GitKaizen.Interface
 kaizen :: Kaizen
 kaizen = Kaizen
   { kDescription = "untar2"
-  , kListInputs  = \_ -> return [] -- [GlobOne "*.tar*"]
+  , kListInputs  = \_ _ -> return [] -- [GlobOne "*.tar*"]
   -- , kListOutputs = \_ -> return []
   , kMainScript  = "untar2.sh"
   }

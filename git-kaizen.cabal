@@ -18,7 +18,7 @@ data-files:
     examples/backups/kaizen.d/02_GatherGitRepos.hs
     examples/bigtrees/kaizen.d/01_HashTarballs.hs
     examples/etc-or-dotfiles/kaizen.d/01_Untar2.hs
-    examples/bigtrees/kaizen.d/01_HashTarballs.sh
+    examples/bigtrees/kaizen.d/hash-tarballs.sh
 
 library
   exposed-modules:

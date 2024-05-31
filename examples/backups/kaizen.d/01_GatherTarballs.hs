@@ -5,7 +5,7 @@ import GitKaizen.Interface
 kaizen :: Kaizen
 kaizen = Kaizen
   { kDescription = "gather tarballs"
-  , kListInputs  = \ps -> findTarballs ps >>= return . singleton -- [GlobOne "*.tar*"]
+  , kListInputs  = \_ ps -> findTarballs ps >>= return . singleton -- [GlobOne "*.tar*"]
   -- , kListOutputs = toOutdirNoClobber "tarballs" -- TODO repo variable here?
   , kMainScript  = "gather-tarballs.sh"
   }

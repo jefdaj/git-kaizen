@@ -5,7 +5,7 @@ import GitKaizen.Interface
 kaizen :: Kaizen
 kaizen = Kaizen
   { kDescription = "gather git repos"
-  , kListInputs  = \_ -> return []
+  , kListInputs  = \_ _ -> return []
   -- , kListOutputs = \_ -> return []
   , kMainScript  = "gather-git-repos.sh"
   }
