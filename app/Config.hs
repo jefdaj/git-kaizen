@@ -44,6 +44,7 @@ overrideConfig args defaults =
       bool s = isPresent args $ longOption s
       rDir = fromMaybe (repoDir defaults) $ long "repodir"
   in defaults
+       -- TODO convert everything to absolute paths here?
        { repoDir   = rDir
        , tmpDir    = fromMaybe (tmpDir defaults) $ long "tmpdir"
        , kaizenDir = fromMaybe (defaultKaizenDir rDir) $ long "kaizendir"
