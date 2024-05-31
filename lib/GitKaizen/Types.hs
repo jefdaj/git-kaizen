@@ -19,9 +19,20 @@ import System.FilePattern (FilePattern)
 -- TODO generalize to kListOutputs "results" and have fields like "added" and
 --      "removed"?  then this could be called preview
 
+-- Take an optional FilePath supplied by the user for where to search,
+-- and return a list of input lists, where each list is one main script call.
+-- TODO should the path always exist and default to git-kaizen supplying the root?
 type ListInputsFn  = Maybe FilePath -> IO [[FilePath]]
-type ListOutputsFn = [FilePath]     -> IO [FilePath]
-type MainScriptFn  = [FilePath]     -> IO () -- TODO return anything? exit code?
+
+-- Given the inputs to one main script call, return the outputs.
+-- TODO replace with the script run with a flag or var to print outputs
+-- TODO later, add an option that says whether the script will be able to predict its outputs before the inputs exist or not. If so, it can be chained.
+type ListOutputsFn = [FilePath] -> IO [FilePath]
+
+-- Take the inputs and actually run the script, hopefully producing the
+-- expected outputs.
+-- TODO git-kaizen should probably enforce that, right?
+type MainScriptFn  = [FilePath] -> IO () -- TODO return anything? exit code?
 
 -- | Top level commment example
 data Kaizen = Kaizen

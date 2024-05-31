@@ -11,10 +11,12 @@ kaizen = Kaizen
   { kDescription = "bigtrees hash tarballs"
 
   -- , kListInputs = [GlobOne "*.tar*"]
-  , kListInputs = \mp -> gitAnnexFind mp >>= notAllDone listOutputs
+  , kListInputs = \mp -> gitAnnexFind mp >>= singletons >>= notAllDone listOutputs
 
-  -- This takes one group of input files and returns the corresponding output files.
-  -- If you define it as a named fn below, you can also use it as part of list inputs.
+  -- This takes one group of input files and returns the corresponding output
+  -- files.  If you define it as a named fn below, you can also use it as above
+  -- to filter out already-done files from the inputs.
+  -- TODO make that an automatic feature of git-kaizen later?
   -- TODO rename kListOutputs:
   -- , kListOutputs = outpaths
   , kListOutputs = \_ -> return []
@@ -24,7 +26,7 @@ kaizen = Kaizen
 
   }
 
-gitAnnexFind :: Maybe FilePath -> IO [[FilePath]]
+gitAnnexFind :: Maybe FilePath -> IO [FilePath]
 gitAnnexFind = undefined
 
 -- remove paths that already have a corresponding .bigtree file
@@ -40,9 +42,8 @@ notAllDone listOutputsFn inPathLists =
 
 -- TODO is this a standard fn already?
 -- TODO if not, move to Interface
--- TODO IO here, right?
 singletons :: [FilePath] -> IO [[FilePath]]
-singletons = undefined -- return $ map $ \p -> [p]
+singletons = mapM $ \p -> return [p]
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?
 --      then this could be called preview
