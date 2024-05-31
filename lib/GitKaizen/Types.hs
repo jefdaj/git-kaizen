@@ -18,13 +18,14 @@ data InPattern
 
 -- | Top level commment example
 data Kaizen = Kaizen
-    { kName       :: String
-    , kInPatterns :: [InPattern]
-    , kOutPaths   :: [String] -> [String]
+    { kDesc        :: String
+    , kListInputs  :: [InPattern]
+    , kListOutputs :: [String] -> [String]
+    , kMainScript  :: [String] -> [String] -> IO ()
+
     -- TODO was this helpful? kDescribe   :: [String] -> [String] -> String
-    , kGuard      :: [String] -> [String] -> IO Bool
+    -- TODO was this helpful? kGuard      :: [String] -> [String] -> IO Bool
     -- TODO actual command.. shelly? turtle? system thing?
-    , kCommand    :: [String] -> [String] -> IO ()
     }
 
 -- | Experiment with determining kaizen priority via filename, Unix style

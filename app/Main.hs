@@ -44,4 +44,4 @@ main = do
   when (args `isPresent` (command "load")) $ do
     kDir <- args `getArgOrExit` (argument "kaizendir")
     ks <- loadKaizens log kDir
-    log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kName a, b)) ks))
+    log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDesc a, b)) ks))

@@ -67,8 +67,8 @@ unit_loadExamplesBackups :: Assertion
 unit_loadExamplesBackups = do
   kDir <- getDataFileName "examples/backups/kaizen.d"
   ((k1,p1):(k2,p2):[]) <- loadKaizens logNowhere kDir
-  kName k1 @?= "gather tarballs"
-  kName k2 @?= "gather git repos"
+  kDesc k1 @?= "gather tarballs"
+  kDesc k2 @?= "gather git repos"
   p1 @?= (Priority 1)
   p2 @?= (Priority 2)
 
@@ -79,5 +79,5 @@ unit_loadExamplesEtcOrDotfiles = do
   kDir <- getDataFileName "examples/etc-or-dotfiles/kaizen.d"
   ((v,p):ks) <- loadKaizens logNowhere kDir
   length ks @?= 0
-  kName v @?= "untar2"
+  kDesc v @?= "untar2"
   p @?= (Priority 1)

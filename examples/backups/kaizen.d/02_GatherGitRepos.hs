@@ -4,11 +4,11 @@ import GitKaizen.Interface
 
 kaizen :: Kaizen
 kaizen = Kaizen
-  { kName = "gather git repos"
-  , kInPatterns = [] -- TODO make a search strategy for this
-  , kOutPaths = outpaths
+  { kDesc = "gather git repos"
+  , kListInputs = [] -- TODO make a search strategy for this
+  , kListOutputs = outpaths
   , kGuard = guard
-  , kCommand = undefined -- TODO write this
+  , kMainScript = undefined -- TODO write this
   }
 
 -- TODO generalize to "results" and have fields like "added" and "removed"?
