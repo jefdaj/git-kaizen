@@ -8,7 +8,6 @@ kaizen = Kaizen
   { kName = "gather git repos"
   , kInPatterns = [] -- TODO make a search strategy for this
   , kOutPaths = outpaths
-  , kDescribe = desc
   , kGuard = guard
   , kCommand = undefined -- TODO write this
   }

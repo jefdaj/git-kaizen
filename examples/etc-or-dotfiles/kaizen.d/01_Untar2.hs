@@ -8,7 +8,6 @@ kaizen = Kaizen
   { kName = "untar2"
   , kInPatterns = [GlobOne "*.tar*"]
   , kOutPaths = outpaths
-  , kDescribe = desc
   , kGuard = guard
   , kCommand = undefined -- TODO write this
   }

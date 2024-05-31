@@ -39,7 +39,7 @@ data Kaizen = Kaizen
     { kName       :: String
     , kInPatterns :: [InPattern]
     , kOutPaths   :: [String] -> [String]
-    , kDescribe   :: [String] -> [String] -> String
+    -- TODO was this helpful? kDescribe   :: [String] -> [String] -> String
     , kGuard      :: [String] -> [String] -> IO Bool
     -- TODO actual command.. shelly? turtle? system thing?
     , kCommand    :: [String] -> [String] -> IO ()
