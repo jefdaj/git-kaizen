@@ -14,6 +14,7 @@ TODO is that my own misconfiguration? is it fixable? open an issue with tasty-di
 module Main where
 
 import Load
+import Run
 import Config -- (Config(..), defaultConfig, overrideConfig)
 import GitKaizen.Types
 import Paths_git_kaizen
@@ -47,7 +48,7 @@ main = do
   ks  <- loadKaizens log $ kaizenDir cfg
   log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
   forM_ ks $ \(k,_) -> do
-    inputPaths <- (kListInputs k) (repoDir cfg) []
+    inputPaths <- runListInputs cfg k
     log <& ("inputPaths: " ++ (unpack . pShow) inputPaths)
 
 mainLoop = undefined

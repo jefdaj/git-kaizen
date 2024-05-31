@@ -2,6 +2,9 @@
 
 module Run where
 
+import Config
+import GitKaizen.Types
+
 -- import Test.Tasty
 -- import Test.Tasty.HUnit
 -- import Test.Tasty.QuickCheck
@@ -25,7 +28,8 @@ module Run where
 -- import Control.Monad.IO.Class (MonadIO)
 -- import Control.Monad (forM_)
 
-runListInputs = undefined
+runListInputs :: Config -> Kaizen -> IO [[FilePath]]
+runListInputs cfg kz = (kListInputs kz) (repoDir cfg) []
 
 runListOutputs = undefined
 
