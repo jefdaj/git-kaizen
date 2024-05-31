@@ -41,8 +41,10 @@ $ nix-shell
 
 ### Update Dependencies
 
-You want the latest GHC version supported by both [nixpkgs-unstable][1] and a Stack LTS [snapshot][2].
-It can be a little tricky because Niv is broken(?), so I update like this:
+You want the latest GHC version supported by both
+[nixpkgs-unstable](https://search.nixos.org/packages?channel=unstable) and a
+Stack LTS [snapshot](https://www.stackage.org/snapshots). It can be a little
+tricky because Niv is broken(?), so I update like this:
 
 1. Find the hash of the latest commit on the nixos/nixpkgs unstable branch.
 2. Manually update the rev and url it in `nix/sources.json`.
@@ -50,6 +52,3 @@ It can be a little tricky because Niv is broken(?), so I update like this:
 5. Check the Stackage site for the latest LTS snapshot that matches one of the Nix-supported GHC versions.
 6. Update the resolver in `stack.yaml` and try to `stack build`
 7. Correct any remaining issues
-
-[1][https://search.nixos.org/packages?channel=unstable]
-[2][https://www.stackage.org/snapshots]
