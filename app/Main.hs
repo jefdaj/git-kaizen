@@ -45,3 +45,5 @@ main = do
     kDir <- args `getArgOrExit` (argument "kaizendir")
     ks <- loadKaizens log kDir
     log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
+
+mainLoop = undefined

@@ -24,3 +24,20 @@ module Run where
 -- import Colog.Core (LogAction(..), (<&), logStringStdout)
 -- import Control.Monad.IO.Class (MonadIO)
 -- import Control.Monad (forM_)
+
+runListInputs = undefined
+
+runListOutputs = undefined
+
+runMainScript = undefined
+
+setupTmpdir = undefined
+
+teardownTmpdir = undefined
+
+withCustomTmpdir = undefined
+
+-- log to kaizen.log in the tmpdir, only mention when there's a problem
+loggingFn = undefined
+
+runNextSteps = undefined

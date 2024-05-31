@@ -50,9 +50,10 @@ library
 executable git-kaizen
   main-is: Main.hs
   other-modules:
+      CLI
+      Git
       Load
       Run
-      Search
       Util
       Paths_git_kaizen
   hs-source-dirs:
@@ -81,10 +82,11 @@ test-suite test-app
   type: exitcode-stdio-1.0
   main-is: Test.hs
   other-modules:
+      CLI
+      Git
       Load
       Main
       Run
-      Search
       Util
       Paths_git_kaizen
   hs-source-dirs:
