@@ -5,9 +5,8 @@ import GitKaizen.Interface
 kaizen :: Kaizen
 kaizen = Kaizen
   { kDesc = "untar2"
-  , kListInputs = [GlobOne "*.tar*"]
+  , kListInputs = undefined -- [GlobOne "*.tar*"]
   , kListOutputs = outpaths
-  , kGuard = guard
   , kMainScript = undefined -- TODO write this
   }
 
@@ -15,8 +14,3 @@ kaizen = Kaizen
 --      then this could be called preview
 outpaths :: [String] -> [String]
 outpaths inpaths = [dropExtension $ head inpaths]
-
--- TODO use asserts and return () rather than returning a bool?
-guard :: [String] -> [String] -> IO Bool
-guard inpaths outpaths = return $
-  (length inpaths  == 1) && (length outpaths == 1)

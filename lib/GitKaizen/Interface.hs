@@ -4,7 +4,7 @@ module GitKaizen.Interface
 
   -- git-kaizen interface
   ( Kaizen(..)
-  , InPattern(..)
+  -- , InPattern(..)
   , Priority(..)
 
   -- git-kaizen test machinery

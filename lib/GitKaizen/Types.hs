@@ -11,15 +11,18 @@ import System.FilePattern (FilePattern)
 -- TODO haskell predicates on dir tree nodes (would work for git dirs!)
 -- TODO output of IO functions?
 -- TODO rename: InputFilesSearch?
-data InPattern
-    = GlobOne String -- ^ Glob and invoke kaizen once per match
-    | GlobAll String -- ^ Glob and invoke kaizen once with a list of matches
-    deriving (Read, Show, Eq)
+--data InPattern
+--     = GlobOne String -- ^ Glob and invoke kaizen once per match
+--     | GlobAll String -- ^ Glob and invoke kaizen once with a list of matches
+--     deriving (Read, Show, Eq)
+
+-- TODO generalize to kListOutputs "results" and have fields like "added" and
+--      "removed"?  then this could be called preview
 
 -- | Top level commment example
 data Kaizen = Kaizen
     { kDesc        :: String
-    , kListInputs  :: [InPattern]
+    , kListInputs  :: Maybe FilePath -> IO [FilePath]
     , kListOutputs :: [String] -> [String]
     , kMainScript  :: [String] -> [String] -> IO ()
 

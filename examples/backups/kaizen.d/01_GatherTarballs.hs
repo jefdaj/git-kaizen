@@ -5,18 +5,18 @@ import GitKaizen.Interface
 kaizen :: Kaizen
 kaizen = Kaizen
   { kDesc = "gather tarballs"
-  , kListInputs = [GlobOne "*.tar*"]
-  , kListOutputs = outpaths
-  , kGuard = guard
+  , kListInputs = findTarballs -- [GlobOne "*.tar*"]
+  , kListOutputs = gatherInOutdir "tarballs" -- TODO repo variable here?
   , kMainScript = undefined -- TODO write this
   }
 
--- TODO generalize to "results" and have fields like "added" and "removed"?
---      then this could be called preview
-outpaths :: [String] -> [String]
-outpaths inpaths = [dropExtension $ head inpaths]
+findTarballs :: Maybe FilePath -> IO [FilePath]
+findTarballs = undefined
 
--- TODO use asserts and return () rather than returning a bool?
-guard :: [String] -> [String] -> IO Bool
-guard inpaths outpaths = return $
-  (length inpaths  == 1) && (length outpaths == 1)
+removeAlreadyInOutdir :: [FilePath] -> [FilePath]
+removeAlreadyInOutdir = undefined
+
+-- Move all files to the output directory, renaming as necessary to avoid
+-- clobbering existing files.
+gatherInOutdir :: FilePath -> [FilePath] -> [FilePath]
+gatherInOutdir outDir inTarballs = undefined
