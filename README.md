@@ -46,9 +46,9 @@ You want the latest GHC version supported by both
 Stack LTS [snapshot](https://www.stackage.org/snapshots). It can be a little
 tricky because Niv is broken(?), so I update like this:
 
-1. Find the hash of the latest commit on the nixos/nixpkgs unstable branch.
-2. Manually update the rev and url it in `nix/sources.json`.
-3. `nix-shell`, `nix repl`, `:l <nixpkgs>`, tab complete `haskell.compiler.ghc`<tab> to find available GHC versions.
-5. Check the Stackage site for the latest LTS snapshot that matches one of the Nix-supported GHC versions.
+1. Find the current `nixpkgs-unstable` git rev [here](https://status.nixos.org/) (should also be the one shown on the github branch)
+2. Manually update the rev and url in `nix/sources.json`, try to `nix-shell`, and edit the sha256sum when you get a mismatch.
+3. `nix-shell` again, `nix repl`, `:l <nixpkgs>`, tab complete `haskell.compiler.ghc`<tab> to find available GHC versions.
+5. Check [Stackage](https://www.stackage.org/) for the latest LTS snapshot that matches one of the Nix-supported GHC versions.
 6. Update the resolver in `stack.yaml` and try to `stack build`
 7. Correct any remaining issues

@@ -13,7 +13,7 @@ packages:
     hackage: docopt-0.7.0.8@sha256:b88ca348766430101ff1d1ca230ea9038a9fcd63aa3f042a4b95ceab207357e5,3352
 snapshots:
 - completed:
-    sha256: 0cd905bf3f615a7f52d52fb6aadda182f695bd1cab10ef892095d974676f0911
-    size: 713334
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/16.yaml
-  original: lts-22.16
+    sha256: 73ad581de7c5306278aec7706cafaf3b1c2eb7abf4ab586e4d9dc675c6106c4e
+    size: 718708
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/23.yaml
+  original: lts-22.23

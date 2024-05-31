@@ -1,8 +1,6 @@
 let
-  # pin when making an annotated tag/release:
-  # sources = import ./nix/sources.nix;
-  # pkgs = import sources.nixpkgs { };
-  pkgs = import <nixpkgs> {};
+  sources = import ./nix/sources.nix;
+  pkgs = import sources.nixpkgs { };
 in
 
 let
@@ -30,7 +28,7 @@ pkgs.mkShell {
   buildInputs = [
     stack-wrapped
     pkgs.zlib
-    pkgs.dhall
+    # pkgs.dhall
   ];
 
   # Configure the Nix path to our own `pkgs`, to ensure Stack-with-Nix uses the
