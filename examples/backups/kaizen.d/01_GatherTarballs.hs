@@ -1,7 +1,6 @@
 module GatherTarballs (kaizen) where
 
 import GitKaizen.Interface
-import System.FilePath.Posix (dropExtension)
 
 kaizen :: Kaizen
 kaizen = Kaizen

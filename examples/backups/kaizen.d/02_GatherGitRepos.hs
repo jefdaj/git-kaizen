@@ -1,7 +1,6 @@
 module GatherGitRepos (kaizen) where
 
 import GitKaizen.Interface
-import System.FilePath.Posix ((</>), takeBaseName)
 
 kaizen :: Kaizen
 kaizen = Kaizen

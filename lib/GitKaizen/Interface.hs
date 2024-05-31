@@ -1,11 +1,21 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module GitKaizen.Interface
+
+  -- git-kaizen interface
   ( Kaizen(..)
   , InPattern(..)
   , Priority(..)
+
+  -- git-kaizen test machinery
   , prop_additionCommutativeInterface
   , test_multiplicationInterface
+
+  -- re-export common utilities
+  , takeBaseName
+  , dropExtension
+  , (</>)
+
   )
   where
 
@@ -13,6 +23,8 @@ import GitKaizen.Types
 
 import Test.Tasty (TestTree)
 import Test.Tasty.QuickCheck (testProperty)
+
+import System.FilePath.Posix ((</>), takeBaseName, dropExtension)
 
 -- QuickCheck property
 prop_additionCommutativeInterface :: Int -> Int -> Bool
