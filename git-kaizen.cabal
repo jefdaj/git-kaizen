@@ -51,6 +51,7 @@ executable git-kaizen
   main-is: Main.hs
   other-modules:
       CLI
+      Config
       Git
       Load
       Run
@@ -83,6 +84,7 @@ test-suite test-app
   main-is: Test.hs
   other-modules:
       CLI
+      Config
       Git
       Load
       Main

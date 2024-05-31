@@ -2,7 +2,6 @@ minimum viable code to get it running:
   Main
     main
     mainLoop
-    overrideConfig
   Git
     confirmRepoClean
     confirmExpectedChanges
@@ -24,6 +23,7 @@ minimum viable code to get it running:
     runNextSteps
   Config
     loadConfig
+    overrideConfig
     def
 
 investigate alternative technologies:
