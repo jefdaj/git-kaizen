@@ -2,6 +2,7 @@ minimum viable code to get it running:
   Main
     main
     mainLoop
+    overrideConfig
   Git
     confirmRepoClean
     confirmExpectedChanges
@@ -21,6 +22,9 @@ minimum viable code to get it running:
     withCustomTmpdir
     logging fn > kaizen.log in tmpdir
     runNextSteps
+  Config
+    loadConfig
+    def
 
 investigate alternative technologies:
   check that ansible playbooks don't basically do what you want before continuing
