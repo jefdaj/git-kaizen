@@ -23,6 +23,7 @@ import Paths_git_kaizen
 
 import Colog.Core (LogAction(..), (<&), logStringStdout)
 import Control.Monad.IO.Class (MonadIO)
+import Control.Monad (forM_)
 
 -- Code is mainly based on loadPlugins from jgm/gitit
 loadKaizen :: LogAction IO String -> FilePath -> IO (Kaizen, Priority)
@@ -83,8 +84,9 @@ unit_loadExamplesEtcOrDotfiles = do
   kDesc v @?= "untar2"
   p @?= (Priority 1)
 
-unit_loadExamples :: Assertion
-unit_loadExamples = do
+unit_load_all_examples :: Assertion
+unit_load_all_examples = do
   exRoot <- getDataFileName "examples"
   exDirs <- filter (not . flip elem [".", ".."]) <$> getDirectoryContents exRoot
-  putStrLn $ show exDirs
+  let kDirs = map (\p -> exRoot </> p </> "kaizen.d") exDirs
+  forM_ kDirs $ loadKaizens logNowhere
