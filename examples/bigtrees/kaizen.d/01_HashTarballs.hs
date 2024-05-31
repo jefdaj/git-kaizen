@@ -14,14 +14,15 @@ kaizen = Kaizen
   -- This takes one group of input files and returns the corresponding output files.
   -- If you define it as a named fn below, you can also use it as part of list inputs.
   -- TODO rename kListOutputs:
-  , kListOutputs = outpaths
+  -- , kListOutputs = outpaths
+  , kListOutputs = \_ -> return []
 
   -- TODO rename kRunScript or similar?
-  , kMainScript = undefined -- TODO write this
+  , kMainScript = \_ _ -> return () -- TODO write this
 
   }
 
-gitAnnexFind :: IO [FilePath]
+gitAnnexFind :: Maybe FilePath -> IO [FilePath]
 gitAnnexFind = undefined
 
 -- remove paths that already have a corresponding .bigtree file

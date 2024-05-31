@@ -12,6 +12,7 @@ dependencies:
   - base
   - co-log-core
   - data-default
+  - directory
   - docopt
   - filepath
   - filepath

@@ -13,6 +13,7 @@ import Data.List (isInfixOf, isPrefixOf)
 import GHC
 import GHC.Paths
 import Unsafe.Coerce
+import System.Directory (getDirectoryContents)
 import System.FilePath ((</>))
 import System.FilePattern.Directory (FilePattern, getDirectoryFiles)
 import Data.List (intercalate)
@@ -81,3 +82,9 @@ unit_loadExamplesEtcOrDotfiles = do
   length ks @?= 0
   kDesc v @?= "untar2"
   p @?= (Priority 1)
+
+unit_loadExamples :: Assertion
+unit_loadExamples = do
+  exRoot <- getDataFileName "examples"
+  exDirs <- filter (not . flip elem [".", ".."]) <$> getDirectoryContents exRoot
+  putStrLn $ show exDirs

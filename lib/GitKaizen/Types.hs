@@ -23,8 +23,8 @@ import System.FilePattern (FilePattern)
 data Kaizen = Kaizen
     { kDesc        :: String
     , kListInputs  :: Maybe FilePath -> IO [FilePath]
-    , kListOutputs :: [String] -> [String]
-    , kMainScript  :: [String] -> [String] -> IO ()
+    , kListOutputs :: [FilePath] -> IO [FilePath]
+    , kMainScript  :: [FilePath] -> [FilePath] -> IO ()
 
     -- TODO was this helpful? kDescribe   :: [String] -> [String] -> String
     -- TODO was this helpful? kGuard      :: [String] -> [String] -> IO Bool
