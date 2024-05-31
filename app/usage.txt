@@ -1,4 +1,4 @@
 Incremental improvement of version controlled files.
 
 Usage:
-  git-kaizen [--config <cfgfile>] [--repodir <repodir>] [--kaizendir <kaizendir>] [--tmpdir <tmpdir>] [--verbose]
+  git-kaizen [--repodir <repodir>] [--tmpdir <tmpdir>] [--kaizendir <kaizendir>] [--verbose]

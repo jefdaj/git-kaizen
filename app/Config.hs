@@ -22,6 +22,9 @@ data Config = Config
   }
   deriving (Read, Show)
 
+defaultKaizenDir :: FilePath -> FilePath
+defaultKaizenDir repoDir = repoDir </> ".kaizen"
+
 defaultConfig :: IO Config
 defaultConfig = do
   repo <- getCurrentDirectory
@@ -29,7 +32,7 @@ defaultConfig = do
   let cfg = Config
         { repoDir   = repo
         , tmpDir    = tmp
-        , kaizenDir = repo </> ".kaizen"
+        , kaizenDir = defaultKaizenDir repo
         , verbose   = True
         }
   return cfg
@@ -39,9 +42,10 @@ overrideConfig :: Arguments -> Config -> Config
 overrideConfig args defaults =
   let long s = getArg    args $ longOption s
       bool s = isPresent args $ longOption s
+      rDir = fromMaybe (repoDir defaults) $ long "repodir"
   in defaults
-       { repoDir   = fromMaybe (repoDir   defaults) $ long "repodir"
-       , tmpDir    = fromMaybe (tmpDir    defaults) $ long "tmpdir"
-       , kaizenDir = fromMaybe (kaizenDir defaults) $ long "kaizendir"
+       { repoDir   = rDir
+       , tmpDir    = fromMaybe (tmpDir defaults) $ long "tmpdir"
+       , kaizenDir = fromMaybe (defaultKaizenDir rDir) $ long "kaizendir"
        , verbose   = bool "verbose" -- TODO any point having a default?
        }
