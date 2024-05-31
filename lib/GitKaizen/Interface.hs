@@ -10,6 +10,7 @@ module GitKaizen.Interface
   -- , MainScriptFn
   -- , InPattern(..)
   , Priority(..)
+  , runInRepo
 
   -- git-kaizen test machinery
   , prop_additionCommutativeInterface
@@ -29,6 +30,13 @@ import Test.Tasty (TestTree)
 import Test.Tasty.QuickCheck (testProperty)
 
 import System.FilePath.Posix ((</>), takeBaseName, dropExtension)
+
+import System.Process -- TODO specifics
+
+runInRepo :: FilePath -> String -> [String] -> IO String
+runInRepo repoDir cmd args =
+  -- TODO catch and wrap IOErrors here?
+  readCreateProcess ((proc cmd args) { cwd=Just repoDir }) ""
 
 -- QuickCheck property
 prop_additionCommutativeInterface :: Int -> Int -> Bool

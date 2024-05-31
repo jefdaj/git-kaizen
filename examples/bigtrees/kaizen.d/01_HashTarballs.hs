@@ -4,7 +4,6 @@ import GitKaizen.Interface
 import Control.Monad (filterM, forM)
 import System.Directory (doesFileExist)
 import System.FilePath (takeFileName)
-import System.Process -- TODO specifics
 import Data.List (isInfixOf)
 
 kaizen :: Kaizen
@@ -30,12 +29,10 @@ kaizen = Kaizen
   }
 
 gitAnnexFind :: FilePath -> [FilePath] -> IO [FilePath]
-gitAnnexFind repoDir pathsToSearch = do
-  -- TODO catch and wrap IOErrors here?
-  let args = ["--in=here"]
-  out <- readCreateProcess ((proc "git-annex" ("find" : args ++ pathsToSearch)) { cwd=Just repoDir }) ""
-  let pathsFound = lines out -- TODO any validation here?
-  return pathsFound
+gitAnnexFind repo pathsToSearch = do
+  let args = ["find", "--in=here"] ++ pathsToSearch
+  out <- runInRepo repo "git-annex" args
+  return $ lines out
 
 onlyTarballs :: [FilePath] -> IO [FilePath]
 onlyTarballs = return . filter (\p -> ".tar" `isInfixOf` takeFileName p)
