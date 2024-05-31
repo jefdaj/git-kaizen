@@ -18,12 +18,15 @@ data-files:
     examples/backups/kaizen.d/02_GatherGitRepos.hs
     examples/bigtrees/kaizen.d/01_HashTarballs.hs
     examples/etc-or-dotfiles/kaizen.d/01_Untar2.hs
+    examples/bigtrees/kaizen.d/01_HashTarballs.sh
 
 library
   exposed-modules:
       GitKaizen.Interface
+      GitKaizen.Run
       GitKaizen.Search
       GitKaizen.Types
+      GitKaizen.Util
   other-modules:
       Paths_git_kaizen
   hs-source-dirs:
@@ -51,6 +54,8 @@ executable git-kaizen
   main-is: Main.hs
   other-modules:
       Load
+      Run
+      Util
       Paths_git_kaizen
   hs-source-dirs:
       app
@@ -80,6 +85,8 @@ test-suite test-app
   other-modules:
       Load
       Main
+      Run
+      Util
       Paths_git_kaizen
   hs-source-dirs:
       test/app

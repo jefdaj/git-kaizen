@@ -7,6 +7,7 @@ copyright:           "AGPL-3.0-only"
 
 data-files:
   - examples/*/kaizen.d/*.hs
+  - examples/*/kaizen.d/*.sh
 
 dependencies:
   - base
@@ -31,8 +32,10 @@ library:
   source-dirs: lib
   exposed-modules:
   - GitKaizen.Interface
+  - GitKaizen.Run
   - GitKaizen.Search
   - GitKaizen.Types
+  - GitKaizen.Util
 
 executable:
   source-dirs: app

@@ -20,6 +20,7 @@ import Data.List (intercalate)
 import Data.List.Split (splitOn)
 
 import Paths_git_kaizen
+import Util (logNowhere)
 
 import Colog.Core (LogAction(..), (<&), logStringStdout)
 import Control.Monad.IO.Class (MonadIO)
@@ -57,11 +58,6 @@ loadKaizens log kDir = do
   ks <- mapM (loadKaizen log) kPaths
   log <& "finished loading"
   return ks
-
--- | For disabling logs during unit tests.
--- TODO where should this live?
-logNowhere :: MonadIO m => LogAction m String
-logNowhere = LogAction $ \_ -> return ()
 
 -- | Test loading the backups example.
 -- TODO pass a no-logging logger here
