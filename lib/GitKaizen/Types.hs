@@ -27,7 +27,7 @@ type ListInputsFn  = Maybe FilePath -> IO [[FilePath]]
 -- Given the inputs to one main script call, return the outputs.
 -- TODO replace with the script run with a flag or var to print outputs
 -- TODO later, add an option that says whether the script will be able to predict its outputs before the inputs exist or not. If so, it can be chained.
-type ListOutputsFn = [FilePath] -> IO [FilePath]
+-- type ListOutputsFn = [FilePath] -> IO [FilePath]
 
 -- Take the inputs and actually run the script, hopefully producing the
 -- expected outputs.
@@ -38,7 +38,7 @@ type MainScriptFn  = [FilePath] -> IO () -- TODO return anything? exit code?
 data Kaizen = Kaizen
     { kDescription :: String
     , kListInputs  :: ListInputsFn
-    , kListOutputs :: ListOutputsFn
+    -- , kListOutputs :: ListOutputsFn
     , kMainScript  :: MainScriptFn
 
     -- TODO was this helpful? kDescriptionribe   :: [String] -> [String] -> String

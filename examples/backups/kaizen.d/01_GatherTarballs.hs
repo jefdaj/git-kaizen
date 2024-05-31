@@ -6,7 +6,7 @@ kaizen :: Kaizen
 kaizen = Kaizen
   { kDescription = "gather tarballs"
   , kListInputs  = \mp -> findTarballs mp >>= return . singleton -- [GlobOne "*.tar*"]
-  , kListOutputs = toOutdirNoClobber "tarballs" -- TODO repo variable here?
+  -- , kListOutputs = toOutdirNoClobber "tarballs" -- TODO repo variable here?
   , kMainScript  = \_ -> return () -- TODO write this
   }
 
@@ -22,5 +22,5 @@ removeAlreadyInOutdir = undefined
 
 -- Move all files to the output directory, renaming as necessary to avoid
 -- clobbering existing files.
-toOutdirNoClobber :: FilePath -> [FilePath] -> IO [FilePath]
-toOutdirNoClobber outDir inTarballs = undefined
+-- toOutdirNoClobber :: FilePath -> [FilePath] -> IO [FilePath]
+-- toOutdirNoClobber outDir inTarballs = undefined

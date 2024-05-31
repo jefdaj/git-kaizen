@@ -6,7 +6,7 @@ kaizen :: Kaizen
 kaizen = Kaizen
   { kDescription = "gather git repos"
   , kListInputs  = \_ -> return []
-  , kListOutputs = \_ -> return []
+  -- , kListOutputs = \_ -> return []
   , kMainScript  = \_ -> return () -- TODO write this
   }
 
