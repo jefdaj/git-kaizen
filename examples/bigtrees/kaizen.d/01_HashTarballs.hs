@@ -31,7 +31,7 @@ gitAnnexFind = undefined
 -- TODO move to Interface
 -- This should usually be the last thing in the list inputs pipeline,
 -- because you want the inputs properly grouped.
-notDone :: ListOutputsFn -> ListOutputsFn
+notDone :: ListOutputsFn -> [FilePath] -> IO [FilePath]
 -- notDone ps = filterM (\p -> (not . any) <$> doesFileExist $ outpaths p)
 notDone listOutputsFn inPaths = undefined -- filterM undefined ps
 
