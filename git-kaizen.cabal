@@ -39,6 +39,7 @@ library
     , ghc
     , ghc-paths
     , pretty-simple
+    , process
     , split
     , tasty
     , tasty-discover
@@ -71,6 +72,7 @@ executable git-kaizen
     , ghc-paths
     , git-kaizen
     , pretty-simple
+    , process
     , split
     , tasty
     , tasty-discover
@@ -106,6 +108,7 @@ test-suite test-app
     , ghc-paths
     , git-kaizen
     , pretty-simple
+    , process
     , split
     , tasty
     , tasty-discover
@@ -135,6 +138,7 @@ test-suite test-lib
     , ghc
     , ghc-paths
     , pretty-simple
+    , process
     , split
     , tasty
     , tasty-discover

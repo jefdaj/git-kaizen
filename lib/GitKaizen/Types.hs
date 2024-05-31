@@ -22,7 +22,7 @@ import System.FilePattern (FilePattern)
 -- Take an optional FilePath supplied by the user for where to search,
 -- and return a list of input lists, where each list is one main script call.
 -- TODO should the path always exist and default to git-kaizen supplying the root?
-type ListInputsFn  = Maybe FilePath -> IO [[FilePath]]
+type ListInputsFn  = [FilePath] -> IO [[FilePath]]
 
 -- Given the inputs to one main script call, return the outputs.
 -- TODO replace with the script run with a flag or var to print outputs

@@ -3,6 +3,8 @@ module HashTarballs where
 import GitKaizen.Interface
 import Control.Monad (filterM, forM)
 import System.Directory (doesFileExist)
+import System.Process -- TODO specifics
+import Data.List (isInfixOf)
 
 kaizen :: Kaizen
 kaizen = Kaizen
@@ -11,7 +13,7 @@ kaizen = Kaizen
   { kDescription = "bigtrees hash tarballs"
 
   -- , kListInputs = [GlobOne "*.tar*"]
-  , kListInputs = \mp -> gitAnnexFind mp >>= singletons -- >>= notAllDone listOutputs
+  , kListInputs = \ps -> gitAnnexFind ps >>= onlyTarballs >>= singletons -- >>= notAllDone listOutputs
 
   -- This takes one group of input files and returns the corresponding output
   -- files.  If you define it as a named fn below, you can also use it as above
@@ -26,8 +28,16 @@ kaizen = Kaizen
 
   }
 
-gitAnnexFind :: Maybe FilePath -> IO [FilePath]
-gitAnnexFind = undefined
+gitAnnexFind :: [FilePath] -> IO [FilePath]
+gitAnnexFind pathsToSearch = do
+  -- TODO catch and wrap IOErrors here?
+  let args = ["--in=here"]
+  out <- readProcess "git-annex" ("find" : args ++ pathsToSearch) ""
+  let pathsFound = lines out -- TODO any validation here?
+  return pathsFound
+
+onlyTarballs :: [FilePath] -> IO [FilePath]
+onlyTarballs = return . filter (".tar" `isInfixOf`)
 
 -- TODO automatically do this in git-kaizen after calling the script to list outputs:
 --

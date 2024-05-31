@@ -21,6 +21,7 @@ dependencies:
   - ghc
   - ghc-paths
   - pretty-simple
+  - process
   - split
   - tasty
   - tasty-discover
