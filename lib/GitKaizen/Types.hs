@@ -16,24 +16,6 @@ data InPattern
     | GlobAll String -- ^ Glob and invoke kaizen once with a list of matches
     deriving (Read, Show, Eq)
 
--- TODO would separate options for anchor + content matching handle everything?
--- TODO mindepth, maxdepth? would fit well with RAM-limited bigtrees later
--- TODO ignore patterns, or negative matches, if they aren't part of filepattern already
-data InPattern2 = InPattern2
-    { ip2Above   :: Maybe FilePattern -- ^ Search the path above (to) this node from root
-    , ip2Below   :: Maybe FilePattern -- ^ Treating this node as root, search the child paths below
-    , ip2Recurse :: Bool -- ^ After finding a matching dir, should we also search inside it?
-    }
-    deriving (Read, Show, Eq)
-
--- TODO sensible defaults
-instance Default InPattern2 where
-    def = InPattern2
-        { ip2Above = Nothing
-        , ip2Below = Nothing
-        , ip2Recurse = True
-        }
-
 -- | Top level commment example
 data Kaizen = Kaizen
     { kName       :: String
