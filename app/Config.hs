@@ -2,6 +2,7 @@ module Config
   ( Config(..)
   , defaultConfig
   , overrideConfig
+  , configEnvVars
   )
   where
 
@@ -36,6 +37,14 @@ defaultConfig = do
         , verbose   = True
         }
   return cfg
+
+-- TODO should this include TMPDIR? or is that different?
+configEnvVars :: Config -> [(String, String)]
+configEnvVars cfg =
+  [ ("GITKAIZEN_REPO_DIR"  , repoDir   cfg)
+  , ("GITKAIZEN_KAIZEN_DIR", kaizenDir cfg)
+  , ("GITKAIZEN_VERBOSE"   , show $ verbose cfg) -- TODO unset if false?
+  ]
 
 -- TODO better absolute paths based on the one in bigtrees?
 makeAbsolute :: FilePath -> FilePath -> FilePath

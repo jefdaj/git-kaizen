@@ -6,6 +6,7 @@ import Config
 import GitKaizen.Types
 import GitKaizen.Interface
 import System.Process -- TODO specifics
+import System.FilePath (makeRelative)
 
 -- import Test.Tasty
 -- import Test.Tasty.HUnit
@@ -34,10 +35,14 @@ runListInputs :: Config -> Kaizen -> IO [[FilePath]]
 runListInputs cfg kz = (kListInputs kz) (repoDir cfg) []
 
 -- TODO better syntax for this? make the shell script usage simple
-runListOutputs :: Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
-runListOutputs = do
-  outPaths <- runMainScriptCC $ addToEnv [("GITKAIZEN_RUN_MODE", "LIST_OUTPUTS")]
-  return outPaths
+-- TODO better design for passing myEnv around
+runListOutputs :: [(String, String)] -> FilePath -> Kaizen -> FilePath -> [FilePath] -> IO [FilePath]
+runListOutputs myEnv repoDir kz binDir inPaths = do
+  outPaths <- runMainScriptCC
+                (addToEnv $ [("GITKAIZEN_RUN_MODE", "LIST_OUTPUTS")] ++ myEnv)
+                repoDir kz binDir inPaths
+  let relPaths = map (makeRelative repoDir) outPaths
+  return relPaths
 
 -- TODO to interface
 -- type CustomizeCreateProcess = [(String, String)] -> CreateProcess -> CreateProcess
@@ -48,14 +53,17 @@ addToEnv myEnv c = case env c of
   Nothing -> c { env = Just myEnv }
   Just vs -> c { env = Just $ vs ++ myEnv }
 
-runMainScript :: Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
+runMainScript :: FilePath -> Kaizen -> FilePath -> [FilePath] -> IO [FilePath]
 runMainScript = runMainScriptCC id
 
 -- TODO should this have the whole config?
-runMainScriptCC :: (CreateProcess -> CreateProcess) -> Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
-runMainScriptCC cc kz repoDir binDir inPaths = do
-  let bin = binDir </> kMainScript kz
-  out <- runInRepoCC cc repoDir bin inPaths
+runMainScriptCC
+  :: (CreateProcess -> CreateProcess)
+  -> FilePath -> Kaizen -> FilePath -> [FilePath]
+  -> IO [FilePath]
+runMainScriptCC cc repoDir kz binDir inPaths = do
+  let cmd = binDir </> kMainScript kz
+  out <- runInRepoCC cc repoDir cmd inPaths
   return $ lines out
 
 setupTmpdir = undefined

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# set -x
+set -x
 
 cd "$TMPDIR"
 
-# TODO pass config vars so they can be used like this:
 INPATH="${GITKAIZEN_REPO_DIR}/${1}"
 
+# This assumes inpath will be named something.tar[.something]
 OUTPATH="$(dirname "$INPATH")/$(basename "$INPATH" | cut -d'.' -f1)".bigtree
 
 case "$GITKAIZEN_RUN_MODE" in

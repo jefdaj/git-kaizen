@@ -44,6 +44,7 @@ main = do
   args <- parseArgsOrExit patterns =<< getArgs
   log <& ("args: " ++ (unpack . pShow) args)
   cfg <- overrideConfig args =<< defaultConfig
+  let myEnv = configEnvVars cfg -- TODO where should this really go?
   log <& ("cfg: " ++ (unpack . pShow) cfg)
   ks  <- loadKaizens log $ kaizenDir cfg
   log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
@@ -51,7 +52,7 @@ main = do
     inputPaths <- runListInputs cfg k
     log <& ("inputPaths: " ++ (unpack . pShow) inputPaths)
     forM_ inputPaths $ \ps -> do
-      outputPaths <- runListOutputs k (repoDir cfg) (kaizenDir cfg) ps
+      outputPaths <- runListOutputs myEnv (repoDir cfg) k (kaizenDir cfg) ps
       log <& ("outputPaths: " ++ (unpack . pShow) outputPaths)
 
 mainLoop = undefined
