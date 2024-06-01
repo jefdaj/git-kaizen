@@ -11,6 +11,7 @@ module GitKaizen.Interface
   -- , InPattern(..)
   , Priority(..)
   , runInRepo
+  , runInRepoCC
 
   -- git-kaizen test machinery
   , prop_additionCommutativeInterface
@@ -34,9 +35,14 @@ import System.FilePath.Posix ((</>), takeBaseName, dropExtension)
 import System.Process -- TODO specifics
 
 runInRepo :: FilePath -> String -> [String] -> IO String
-runInRepo repoDir cmd args =
+runInRepo = runInRepoCC id
+
+runInRepoCC :: (CreateProcess -> CreateProcess) -> FilePath -> String -> [String] -> IO String
+runInRepoCC cc repoDir cmd args = do
   -- TODO catch and wrap IOErrors here?
-  readCreateProcess ((proc cmd args) { cwd=Just repoDir }) ""
+  let p  = (proc cmd args) { cwd=Just repoDir }
+      p' = cc p
+  readCreateProcess p' ""
 
 -- QuickCheck property
 prop_additionCommutativeInterface :: Int -> Int -> Bool

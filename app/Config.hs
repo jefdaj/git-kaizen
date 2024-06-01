@@ -5,7 +5,7 @@ module Config
   )
   where
 
-import System.FilePath ((</>))
+import System.FilePath ((</>), isRelative)
 import System.Directory (getCurrentDirectory, getTemporaryDirectory)
 import Data.Maybe (fromMaybe)
 import System.Console.Docopt -- TODO specifics
@@ -37,16 +37,26 @@ defaultConfig = do
         }
   return cfg
 
+-- TODO better absolute paths based on the one in bigtrees?
+makeAbsolute :: FilePath -> FilePath -> FilePath
+makeAbsolute cwd p = if isRelative p then cwd </> p else p
+
 -- | Apply overrides from Docopt
-overrideConfig :: Arguments -> Config -> Config
-overrideConfig args defaults =
+overrideConfig :: Arguments -> Config -> IO Config
+overrideConfig args defaults = do
+  cwd <- getCurrentDirectory
+
   let long s = getArg    args $ longOption s
       bool s = isPresent args $ longOption s
+
       rDir = fromMaybe (repoDir defaults) $ long "repodir"
-  in defaults
-       -- TODO convert everything to absolute paths here?
-       { repoDir   = rDir
-       , tmpDir    = fromMaybe (tmpDir defaults) $ long "tmpdir"
-       , kaizenDir = fromMaybe (defaultKaizenDir rDir) $ long "kaizendir"
-       , verbose   = bool "verbose" -- TODO any point having a default?
+      tDir = fromMaybe (tmpDir defaults) $ long "tmpdir"
+      kDir = fromMaybe (defaultKaizenDir rDir) $ long "kaizendir"
+      v    = bool "verbose" -- TODO any point in a default for this?
+
+  return $ defaults
+       { repoDir   = makeAbsolute cwd rDir
+       , tmpDir    = makeAbsolute cwd tDir
+       , kaizenDir = makeAbsolute cwd kDir
+       , verbose   = v
        }

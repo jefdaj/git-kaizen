@@ -4,6 +4,8 @@ module Run where
 
 import Config
 import GitKaizen.Types
+import GitKaizen.Interface
+import System.Process -- TODO specifics
 
 -- import Test.Tasty
 -- import Test.Tasty.HUnit
@@ -31,9 +33,27 @@ import GitKaizen.Types
 runListInputs :: Config -> Kaizen -> IO [[FilePath]]
 runListInputs cfg kz = (kListInputs kz) (repoDir cfg) []
 
-runListOutputs = undefined
+-- TODO better syntax for this? make the shell script usage simple
+runListOutputs :: Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
+runListOutputs = runMainScriptCC $ addToEnv [("GITKAIZEN_RUN_MODE", "LIST_OUTPUTS")]
 
-runMainScript = undefined
+-- TODO to interface
+-- type CustomizeCreateProcess = [(String, String)] -> CreateProcess -> CreateProcess
+
+addToEnv :: [(String, String)] -> CreateProcess -> CreateProcess
+addToEnv myEnv c = case env c of
+  Nothing -> c { env = Just myEnv }
+  Just vs -> c { env = Just $ vs ++ myEnv }
+
+runMainScript :: Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
+runMainScript = runMainScriptCC id
+
+-- TODO should this have the whole config?
+runMainScriptCC :: (CreateProcess -> CreateProcess) -> Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
+runMainScriptCC cc kz repoDir binDir inPaths = do
+  let bin = binDir </> kMainScript kz
+  out <- runInRepoCC cc repoDir bin inPaths
+  return $ lines out
 
 setupTmpdir = undefined
 

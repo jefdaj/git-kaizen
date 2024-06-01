@@ -43,12 +43,15 @@ main = do
   let log = logStringStdout -- TODO customize it
   args <- parseArgsOrExit patterns =<< getArgs
   log <& ("args: " ++ (unpack . pShow) args)
-  cfg <- return . overrideConfig args =<< defaultConfig
+  cfg <- overrideConfig args =<< defaultConfig
   log <& ("cfg: " ++ (unpack . pShow) cfg)
   ks  <- loadKaizens log $ kaizenDir cfg
   log <& ("ks: " ++ (unpack . pShow) (map (\(a,b) -> (kDescription a, b)) ks))
   forM_ ks $ \(k,_) -> do
     inputPaths <- runListInputs cfg k
     log <& ("inputPaths: " ++ (unpack . pShow) inputPaths)
+    forM_ inputPaths $ \ps -> do
+      outputPaths <- runListOutputs k (repoDir cfg) (kaizenDir cfg) ps
+      log <& ("outputPaths: " ++ (unpack . pShow) outputPaths)
 
 mainLoop = undefined
