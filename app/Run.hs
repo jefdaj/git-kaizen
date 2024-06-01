@@ -35,11 +35,14 @@ runListInputs cfg kz = (kListInputs kz) (repoDir cfg) []
 
 -- TODO better syntax for this? make the shell script usage simple
 runListOutputs :: Kaizen -> FilePath -> FilePath -> [FilePath] -> IO [FilePath]
-runListOutputs = runMainScriptCC $ addToEnv [("GITKAIZEN_RUN_MODE", "LIST_OUTPUTS")]
+runListOutputs = do
+  outPaths <- runMainScriptCC $ addToEnv [("GITKAIZEN_RUN_MODE", "LIST_OUTPUTS")]
+  return outPaths
 
 -- TODO to interface
 -- type CustomizeCreateProcess = [(String, String)] -> CreateProcess -> CreateProcess
 
+-- TODO proper merge in case the particular env variable exists
 addToEnv :: [(String, String)] -> CreateProcess -> CreateProcess
 addToEnv myEnv c = case env c of
   Nothing -> c { env = Just myEnv }

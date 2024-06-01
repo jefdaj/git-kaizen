@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
-set -x
+# set -x
 
 cd "$TMPDIR"
 
-INPATH="$1"
+# TODO pass config vars so they can be used like this:
+INPATH="${GITKAIZEN_REPO_DIR}/${1}"
+
 OUTPATH="$(dirname "$INPATH")/$(basename "$INPATH" | cut -d'.' -f1)".bigtree
 
-# TODO can i define it in a way that shortens this?
-if [[ $GITKAIZEN_RUN_MODE == LIST_OUTPUTS ]]; then
-  echo "$OUTPATH"
-  exit 0
-fi
+case "$GITKAIZEN_RUN_MODE" in
+  LIST_OUTPUTS) echo "$OUTPATH"; exit 0;;
+  *) echo "error"; exit 1;;
+esac
 
 # TODO otherwise, do the extract into tmpdir + bigtrees hash thing
