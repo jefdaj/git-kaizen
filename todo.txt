@@ -1,3 +1,53 @@
+UI/repl idea:
+  can lift a lot of it from ortholang, since you figured out the hairy details already
+  commands:
+    run <plan numbers, ranges>
+    show/info <single plan number>
+    plan/more (also runs at the beginning)
+    quit/exit/done
+    clear
+    continue (signaling you manually cleaned up after an error)
+
+updated workflow per script, ordered by priority:
+  make types for everything this time
+  say how many inputs/plans are present at each step when verbose
+
+  1. glob/regex to find files, rather than git annex: pattern(s) -> io inputs
+
+  2. make initial ("draft") plan minus outputs: inputs -> io draftplan
+       because outputs require running all the scripts, which will get slow
+       so initial plan so far is { script, inputs, optional resource requirements: RAM, tmp space, final space }
+       user fn includes making singletons, adding reference input files or whatever
+
+  3. filter draft plans
+       user fn
+       building blocks: inputs include broken link (because for some scripts that's ok)
+       git-kaizen removes the ones that we don't have tmpdir space for, and decides RAM or disk
+         can just pass tmpdir options as args at the top level
+       things users might check: inputs are queues of things to extract/remove and they haven't built up enough items
+
+  4. run list_outputs to fill out ("finish") the plans
+       this is the slow step we're trying to avoid running too much
+       later, can expand list_outputs -> list_changes and have it match staged git changes
+         outputs = { adds, edits, rms, mvs }
+
+  5. filter out final plans that don't meet a list of criteria:
+       script exited nonzero on list_outputs or didn't print any outputs, signaling something wrong
+       all outputs already exist + are newer than all inputs
+
+  6. user picks remaining plans and the order to run them in
+
+  5. run scripts:
+       they can do their own git annex unlock, git mv, mv, git annex add etc! much simpler
+       convention should be git-kaizen ensures clean repo first, then inspects staged files before committing?
+       only one step at a time for now; no fiddling with parallel bugs
+
+no need to try to determine what runs before what else (for now)! user sets priorities in a sane order:
+  01_UpdateSortedTree
+  01_UpdateTarballTrees
+  02_UpdateTarballQueues
+  03_ExtractProcessRecompressTarballs
+
 minimum viable code to get it running:
   Main
     main
@@ -13,8 +63,6 @@ minimum viable code to get it running:
     userAnswerYesNo
     nextStepsProgressSpinner
   Run
-    runListInputs
-    runListOutputs
     runMainScript
     setupTmpdir
     teardownTmpdir
